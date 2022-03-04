@@ -30,6 +30,6 @@ Proyecto Grupal ADIST
 
 
 ### Participantes
-- Juan Antonio González Rivera ► [Deg42](https://github.com/Deg42)
-- Juan Miguel Costa Lucena ► [JuanmiCLucena](https://github.com/JuanmiCLucena)
-- Rafael Bermudo Villaécija ► [rafaelbv95](https://github.com/rafaelbv95)
+- Aranda Cañada, Antonio Jesús ► [haxezeta](https://github.com/haxezeta)
+- Cabeza Acal, Francisco José ► [Langdom91](https://github.com/Langdom91)
+- Cabeza Acal, Pablo ► [cabeezaa01](https://github.com/cabeezaa01)
