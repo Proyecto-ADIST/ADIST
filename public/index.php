@@ -14,7 +14,6 @@ return function (array $context) {
 
 <html>
     <body>
-        <h1> Hola mundo wadawdawdawdawdawdaw
-            awdawdd</h1>
+        <h1> otra cosa</h1>
     </body>
 </html>
