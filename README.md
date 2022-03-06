@@ -5,9 +5,10 @@ Proyecto Grupal ADIST
 
 ## Requisitos Desarrollo en Entorno Servidor
 
-- [ ] __RA5__: objeto form, objetos relacionados con eventos, eventos, envíos y validación de formularios, etc.
-- [ ] __RA6__: modelo de objetos DOM: objetos, acceso, gestión de eventos.
-- [ ] __RA7__: AJAX: envío y recepción de datos de forma asíncrona.
+- [ ] __RA5__:  Deberá estar implementada con Symfony
+- [ ] __RA7__:  Deberá implementar una API REST que permita hacer CRUD de alguna entidad (noticias, usuarios, recetas, reservas... dependiendo de lo que trate la aplicación)
+- [ ] __RA8__:  Deberá usar AJAX
+- [ ] __RA9__:  Deberá hacer uso de algún servicio externo (Google, APIs externas, Twitter, Facebook, Instagram, bit.ly...)
 
 ## Requisitos Desarrollo en el Entorno Cliente
 
