@@ -32,4 +32,4 @@ Proyecto Grupal ADIST
 ### Participantes
 - Aranda Cañada, Antonio Jesús ► [haxezeta](https://github.com/haxezeta)
 - Cabeza Acal, Francisco José ► [Langdom91](https://github.com/Langdom91)
-- Cabeza Acal, Pablo ► [cabeezaa01](https://github.com/cabeezaa01)
+- Cabeza Acal, Pablo ► [cabeezaa0](https://github.com/cabeezaa0)
