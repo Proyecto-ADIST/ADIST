@@ -10,46 +10,46 @@
 
 {% block body %}
 
-
-	{% if is_granted('ROLE_USER') %}
-
-		<div class="mb-3">
-			Te has logeado como
-			{{ app.user.username }},
-			<a href="{{ path('app_logout') }}">Salir</a>
-		</div>
-
-	{% else %}
 		<form method="post">
 			{% if error %}
 				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 			{% endif %}
+			<html>
+				<body>
+					<div class="container">
+						<h1 class="h3 mb-3 font-weight-normal mt-4">Iniciar sesión</h1>
+						<div class="row">
 
-			<h1 class="h3 mb-3 font-weight-normal">Inicie sesión</h1>
-			<label for="inputEmail">Email</label>
-			<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-			<label for="inputPassword">Contraseña</label>
-			<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+							<div class="col-12">
+								<label for="inputEmail">Email:</label>
+							</div>
 
-			<input
-			type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+							<div class="col-12">
+								<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+							</div>
 
-			{#
-							        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-							        See https://symfony.com/doc/current/security/remember_me.html
+							<div class="col-12">
+								<div id="emailHelpBlock" class="form-text">  Su email debe tener la siguiente estructura: <span style="font-style: italic">ejemplo</span>@gmail.com</div>
+							</div>
+
+							<div class="col-12">
+								<label for="inputPassword">Contraseña:</label>
+							</div>
+
+							<div class="col-12 mb-3">
+								<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+								{# Meter validación #}
+								{# <div id="passwordHelpBlock" class="form-text"> Su contraseña debe tener entre 8-20 caracteres de longitud, contener letras y números.</div> #}
+							</div>
+						</div>
+
+							<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+							<button class="btn btn-lg btn-primary" type="submit">Iniciar</button>					
 							
-							        <div class="checkbox mb-3">
-							            <label>
-							                <input type="checkbox" name="_remember_me"> Remember me
-							            </label>
-							        </div>
-							    #}
-
-			<button class="btn btn-lg btn-primary" type="submit">
-				Iniciar
-			</button>
+					</div>
+				</body>
+			</html>			
 		</form>
-	{% endif %}
 
 
 {% endblock %}

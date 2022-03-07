@@ -1,6 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!
+{% block title %}
+	{% if is_granted('ROLE_ADMIN') %}
+
+		ADIST - Adiministrador
+
+
+	{% endif %}
+
+	{% if is_granted('ROLE_REPARTIDOR') %}
+
+		ADIST - Repartidor
+
+
+	{% endif %}
+
+	{% if is_granted('ROLE_ALMACENISTA') %}
+
+		ADIST - Almacenista
+
+
+	{% endif %}
+
+
 {% endblock %}
 
 
