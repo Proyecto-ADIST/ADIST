@@ -5,7 +5,7 @@
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 {% endblock %}
 
-{% block title %}Inicio
+{% block title %}Inicio de sesión
 {% endblock %}
 
 {% block body %}
@@ -45,7 +45,7 @@
 
 							<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 							<button class="btn btn-lg btn-primary" type="submit">Iniciar</button>					
-							
+
 					</div>
 				</body>
 			</html>			
