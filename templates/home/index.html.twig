@@ -30,20 +30,20 @@
 
 	{% if is_granted('ROLE_ADMIN') %}
 
-		{% include 'componentesHTML/navADMIN.html.twig' %}
+		{% include 'componentesHTML/admin.html.twig' %}
 
 
 	{% endif %}
 
 	{% if (is_granted('ROLE_REPARTIDOR')) %} {# || es or en twig#}
 
-		{% include 'componentesHTML/navREPARTIDOR.html.twig' %}
+		{% include 'componentesHTML/repartidor.html.twig' %}
 
 	{% endif %}
 
     {% if (is_granted('ROLE_ALMACENISTA')) %}
 
-		{% include 'componentesHTML/navALMACENISTA.html.twig' %}
+		{% include 'componentesHTML/almacenista.html.twig' %}
 
 
 	{% endif %}
