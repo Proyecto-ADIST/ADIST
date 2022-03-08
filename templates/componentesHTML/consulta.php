@@ -25,8 +25,7 @@ if(isset($_POST['productos']))
 		nombre LIKE '%".$q."%' OR
 		tipoProducto LIKE '%".$q."%' OR
 		precio LIKE '%".$q."%' OR
-        stock LIKE '%".$q."%' OR
-		pedidos LIKE '%".$q."%'";
+		stock LIKE '%".$q."%'";
 }
 
 $buscarProductos=$conexion->query($query);
@@ -40,7 +39,6 @@ if ($buscarProductos->num_rows > 0)
 			<td>TIPO</td>
 			<td>PRECIO</td>
             <td>STOCK</td>
-			<td>PEDIDOS</td>
 		</tr>';
 
 	while($filaProductos= $filaProductos->fetch_assoc())
