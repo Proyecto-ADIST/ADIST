@@ -25,18 +25,25 @@
           <a class="nav-link" href="#">Pedidos</a>
         </li>
         <li class="nav-item">
-          <a class= "nav-link">Rol: <span style="color: green;">Repartidor</span></a>
+          <a class="nav-link" href="#">Productos</a>
         </li>
-        
+        <li class="nav-item">
+          <a class= "nav-link">Rol: <span style="color: green;">Repartidor</span></a>
+        </li>     
       </ul>
       
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Buscar producto..." aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Buscar</button>
-      </form>
+        <form class="d-flex">
+          <input type="text"  class="form-control me-2" name="busqueda" placeholder="Buscar producto..."></br>        
+        </form>
 
 
-      <a class="d-flex nav-link" href="{{ path('app_logout') }}"><span style="color: red;">Cerrar Sesión</span></a>
-    </div>
+					<a class="d-flex nav-link" href="{{ path('app_logout') }}"><span style="color: red;">Cerrar Sesión</span></a>
+        </div>
   </div>
 </nav>
+
+
+
+        <section id="tabla_resultado">
+  <!-- Aqui se despliega la tabla resultado -->
+      </section>

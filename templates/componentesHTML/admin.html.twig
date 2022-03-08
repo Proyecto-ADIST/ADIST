@@ -1,43 +1,92 @@
-
-
 <style>
 
-.adist{
-    font-family: Verdana;
-}
+	.adist {
+		font-family: Verdana;
+	}
 </style>
+<html>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand " href="#">
+					<h1>ADIST</h1>
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item"></li>
+						<li class="nav-item">
+							<a class="nav-link">Rol:
+								<span style="color: green;">Administrador</span>
+							</a>
+						</li>
+					</ul>
+
+					<form class="d-flex">
+            <input type="text"  class="form-control me-2" name="busqueda" placeholder="Buscar producto..."></br>        
+          </form>
 
 
+					<a class="d-flex nav-link" href="{{ path('app_logout') }}"><span style="color: red;">Cerrar Sesión</span></a>
+        </div>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand " href="#"><h1>ADIST</h1></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">Tiendas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pedidos</a>
-        </li>
-        <li class="nav-item">
-          <a class= "nav-link">Rol: <span style="color: green;">Administrador</span></a>
-        </li>
-        <li class="nav-item">
-          <a class= "nav-link" href="{{ path('app_register') }}"><span style="color: blue;">Crear Usuario</span></a>
-        </li>        
-      </ul>
+        <section id="tabla_resultado">
+  <!-- Aqui se despliega la tabla resultado -->
+      </section>
       
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Buscar producto..." aria-label="Search">
-        <button class="btn btn-outline-success me-3" type="submit">Buscar</button>
-      </form>
+			</div>
+		</nav>
+	</header>
 
+	<main role="main">
 
-      <a class="d-flex nav-link" href="{{ path('app_logout') }}"><span style="color: red;">Cerrar Sesión</span></a>
-    </div>
-  </div>
-</nav>
+		<div class="container">
+
+			<div class="row row-cols-1 row-cols-md-3 g-4 mt-5 ms-5">
+
+				<div class="col">
+
+					<div class="card text-center">
+						<div class=" card bg-violet h-100">
+							<div class="card-body d-flex flex-column">
+								<li class="card-title text-light">
+									<a class="card-text text-align-center">
+										<span style="color: black;">Crear Nuevo Usuario</span>
+									</a>
+								</li>
+								<a href="{{ path('app_register') }}" class="btn btn-success">Ir al registro</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col">
+
+					<div class="card text-center">          
+						<div class=" card bg-violet h-100">
+							<div class="card-body d-flex flex-column">
+								<li class="card-title text-light">
+									<a class="card-text text-align-center">
+										<span style="color: black;">Eliminar Usuario</span>
+									</a>
+								</li>
+								<a href="#" class="btn btn-danger">Mostrar lista de usuarios</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</main>
+
+</body>
+
+</html>

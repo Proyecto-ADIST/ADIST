@@ -5,35 +5,35 @@
 
 {% block body %}
     <div>
-        <a type="submit" onclick="history.back()" class="ms-3 mt-3"><span style="color: blue;">Volver</span></a>
+		<a type="submit" onclick="history.back()" class="ms-3 mt-3"><span style="color: blue;">&laquo;</span><span class="ms-2" style="color: blue;">Volver</span></a>
     </div>
 
 	<div class="container">
 		<h1 class="h3 mb-3 mt-4">Registro</h1>
         {{ form_start(registrationForm) }}
 		<div class="row">
-			<div class="col-12">
+			<div class="col-12 mb-3">
 				{{ form_row(registrationForm.name) }}
 			</div>
-			<div class="col-12">
+			<div class="col-12 mb-3">
 				{{ form_row(registrationForm.email) }}
 			</div>
-			<div class="col-12">
+			<div class="col-12 mb-3">
 				{{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
 			</div>
-			<div class="col-12">
+			<div class="col-12 mb-3">
 				{{ form_row(registrationForm.lastname) }}
 			</div>
-			<div class="col-12">
+			<div class="col-12 mb-3">
 				{{ form_row(registrationForm.roles) }}
 			</div>
-			<div class="col-12">
+			<div class="col-12 mb-3">
 				{{ form_row(registrationForm.agreeTerms) }}
 			</div>
-            <div class="col-12">
-				<button type="submit" class="btn">Registrar</button>
+            <div class="col-12 mb-3">
+				<button type="submit" class="btn btn-lg btn-success">Registrar</button>
 	        {{ form_end(registrationForm) }}
 			</div>
 
