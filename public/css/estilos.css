@@ -17,8 +17,9 @@
     color: green !important;
 }
 
-.fondoBody{
-    background-color: #E6CEF3;
+.difuminado{
+    background-color: red;
+    /*background: linear-gradient(#e66465, #9198e5);*/
 }
 
 .formulario{
