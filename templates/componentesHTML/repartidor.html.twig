@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{#
 <nav class="navbar navbar-expand-lg navbar-light colorFondo">
 	<div class="container-fluid">
 					<img src="/images/logo.svg" style="width: 6%;">
@@ -43,15 +43,15 @@
 
 		<form class="d-flex">
 			<input type="text" class="form-control me-1" name="busqueda" placeholder="Buscar producto..."></br>
-
 	</form>
 </div>
 <a class="d-flex nav-link" href="{{ path('app_logout') }}">
 	<span style="color: red;">Cerrar Sesión</span>
 </a></div><div>
-
+</nav>
+#}
+{#
 <section
 	id="tabla_resultado"><!-- Aqui se despliega la tabla resultado -->
 </section></div></div></nav><sectionid="tabla_resultado"><!-- Aqui se despliega la tabla resultado --></section>
-
-{% endblock %}
+#}

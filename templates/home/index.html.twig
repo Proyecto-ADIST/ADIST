@@ -35,13 +35,13 @@
 
 	{% endif %}
 
-	{% if (is_granted('ROLE_REPARTIDOR')) %} {# || es or en twig#}
+	{% if is_granted('ROLE_REPARTIDOR') %} {# || es or en twig#}
 
 		{% include 'componentesHTML/repartidor.html.twig' %}
 
 	{% endif %}
 
-    {% if (is_granted('ROLE_ALMACENISTA')) %}
+    {% if is_granted('ROLE_ALMACENISTA') %}
 
 		{% include 'componentesHTML/almacenista.html.twig' %}
 
