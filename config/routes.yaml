@@ -17,3 +17,8 @@ app_register:
 app_usuarios:
   path: /usuarios
   controller: App\Controller\UsuariosController::usuarios
+
+api_buscar_producto:
+  path: /findBySimilarName
+  controller: App\Controller\ApiController::findBySimilarName
+  methods: ["POST"]

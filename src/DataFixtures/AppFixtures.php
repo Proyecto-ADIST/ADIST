@@ -19,7 +19,7 @@ class AppFixtures extends Fixture
     {
         $this->passwordEncoder = $passwordEncoder;
     }
-    
+
     public function load(ObjectManager $manager): void
     {
         //********************USUARIOS*******************//
@@ -114,6 +114,14 @@ class AppFixtures extends Fixture
 
 
         //********************PEDIDOS*******************//
+
+        // Pedido 1
+        $pedido1 = new Pedido();
+        $pedido1->setUser($usuario1);
+        $pedido1->addProducto($producto1);
+        $pedido1->setTienda($tienda1);
+        $manager->persist($pedido1);
+
         //********************PEDIDOS_PRODUCTOS*******************//
 
         $manager->flush();
