@@ -5,81 +5,99 @@
 	}
 </style>
 <html>
-<body>
-	<header>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<div class="container-fluid">
-			<img src="/images/logo.svg" style="width: 6%;">
-				<a class="navbar-brand " href="#">
-					<h1>ADIST</h1>
-				</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item"></li>
-						<li class="nav-item">
-							<a class="nav-link">Rol:
-								<span style="color: green;">Administrador</span>
-							</a>
-						</li>
-					</ul>
-			</div>
-			<div>
-				<a class="d-flex nav-link" href="{{ path('app_logout') }}"><span style="color: red;">Cerrar Sesión</span></a>
-        	</div>
-		</nav>
-	</header>
+	<body>
+		<header>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="container-fluid">
+					<img src="/images/logo.svg" style="width: 6%;">
+					<a class="navbar-brand " href="#">
+						<h1>ADIST</h1>
+					</a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							<li class="nav-item ms-5">
+								<a class="nav-link">Rol:
+									<span style="color: green;">Administrador</span>
+								</a>
+							</li>
+							<li class="nav-item ms-3 me-3">
+								<a class="nav-link">Nombre:
+									{{ app.user.name }}</a>
+							</li>
+							<li class="nav-item me-3">
+								<a class="nav-link">Apellido:
+									{{ app.user.lastname }}</a>
+							</li>
+							<li class="nav-item me-3">
+								<a class="nav-link">Correo:
+									{{ app.user.email }}</a>
+							</li>
+						</ul>
+					</div>
+					<div>
+						<a class="d-flex nav-link" href="{{ path('app_logout') }}">
+							<span style="color: red;">Cerrar Sesión</span>
+						</a>
+					</div>
+				</nav>
+			</header>
 
-	<main role="main">
+			<main role="main">
 
-		<div class="container">
+				<div class="container">
 
-			<div class="row row-cols-1 row-cols-md-3 g-4 mt-5 ms-5">
+					<div class="row row-cols-1 row-cols-md-3 g-4 mt-5 ms-5">
 
-				<div class="col ms-5">
+						<div class="col ms-5">
 
-					<div class="card text-center ms-5">
-					<img src="/images/nuevo.png" href="{{ path('app_register') }}" class="car-img-top img-fluid">
-						<div class=" card bg-violet h-100">
-							<div class="card-body d-flex flex-column">
-								<li class="card-title text-light">
-									<a class="card-text text-align-center">
-										<span style="color: black;">Crear Nuevo Usuario</span>
-									</a>
-								</li>
-								<a href="{{ path('app_register') }}" class="btn btn-success">Ir al registro</a>
+							<div class="card text-center ms-5">
+								<img src="/images/nuevo.png" href="{{ path('app_register') }}" class="car-img-top img-fluid">
+								<div class=" card bg-violet h-100">
+									<div class="card-body d-flex flex-column">
+										<li class="card-title text-light">
+											<a class="card-text text-align-center">
+												<span style="color: black;">Crear Nuevo Usuario</span>
+											</a>
+										</li>
+										<a href="{{ path('app_register') }}" class="btn btn-success">Ir al registro</a>
+									</div>
+								</div>
 							</div>
+
 						</div>
+
+						<div class="col">
+
+							<div class="card text-center ms-5">
+								<img src="/images/eliminar.png" href="{{ path('app_usuarios') }}" class="car-img-top">
+								<div class=" card bg-violet h-100">
+									<div class="card-body d-flex flex-column">
+										<li class="card-title text-light">
+											<a class="card-text text-align-center">
+												<span style="color: black;">Eliminar Usuario</span>
+											</a>
+										</li>
+										<a href="{{ path('app_usuarios') }}" class="btn btn-danger">Ir a la lista de usuarios</a>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
 					</div>
 
 				</div>
 
-				<div class="col">
-
-					<div class="card text-center ms-5">
-					<img src="/images/eliminar.png" href="{{ path('app_usuarios') }}" class="car-img-top">   
-						<div class=" card bg-violet h-100">
-							<div class="card-body d-flex flex-column">
-								<li class="card-title text-light">
-									<a class="card-text text-align-center">
-										<span style="color: black;">Eliminar Usuario</span>
-									</a>
-								</li>
-								<a href="{{ path('app_usuarios') }}" class="btn btn-danger">Ir a la lista de usuarios</a>
-							</div>
-						</div>
-					</div>
-
-				</div>
-
-			</div>
-
-		</div>
-
-	</main>
-
-</body>
-
+			</main>
+		</body>
+	</body>
 </html>
+
+<?php
+	$usuario->setName("Laura");
+        $usuario->setLastname("Moreno");
+        $usuario->setEmail("repartidor@gmail.com");
+?>
