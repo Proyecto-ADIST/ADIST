@@ -30,7 +30,7 @@ class Producto
     private $tipoProducto;
 
     /**
-     * @ORM\Column(type="decimal")
+     * @ORM\Column(type="float")
      */
     private $precio;
 
@@ -78,12 +78,12 @@ class Producto
         return $this;
     }
 
-    public function getPrecio(): ?decimal
+    public function getPrecio(): ?float
     {
         return $this->precio;
     }
 
-    public function setPrecio(decimal $precio): self
+    public function setPrecio(float $precio): self
     {
         $this->precio = $precio;
 
