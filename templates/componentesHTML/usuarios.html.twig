@@ -7,7 +7,7 @@
 
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
-			<img src="/images/logo.svg" style="width: 6%;">
+				<img src="/images/logo.svg" style="width: 6%;">
 				<a class="navbar-brand " href="#">
 					<h1>ADIST</h1>
 				</a>
@@ -25,6 +25,19 @@
 						<li class="nav-item">
 							<a class="nav-link">Lista de usuarios
 							</a>
+						</li>
+
+						<li class="nav-item ms-3 me-3">
+							<a class="nav-link">Nombre:
+								{{ app.user.name }}</a>
+						</li>
+						<li class="nav-item me-3">
+							<a class="nav-link">Apellido:
+								{{ app.user.lastname }}</a>
+						</li>
+						<li class="nav-item me-3">
+							<a class="nav-link">Correo:
+								{{ app.user.email }}</a>
 						</li>
 					</ul>
 				</div>
