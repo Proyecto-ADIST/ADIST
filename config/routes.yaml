@@ -18,7 +18,23 @@ app_usuarios:
   path: /usuarios
   controller: App\Controller\UsuariosController::usuarios
 
+api_get_producto:
+  path: /api/productos/{id}
+  controller: App\Controller\ApiController::getProducto
+  methods: ["GET"]
+
+api_get_productos:
+  path: /api/productos
+  controller: App\Controller\ApiController::getProductos
+  methods: ["GET"]
+
+api_get_user:
+  path: /api/users/{id}
+  controller: App\Controller\ApiController::getProductoUser
+  methods: ["GET"]
+
 api_buscar_producto:
   path: /findBySimilarName
   controller: App\Controller\ApiController::findBySimilarName
   methods: ["POST"]
+

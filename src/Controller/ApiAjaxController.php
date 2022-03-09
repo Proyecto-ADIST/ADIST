@@ -10,7 +10,7 @@ use App\Entity\Pedido;
 use App\Entity\Producto;
 use PhpParser\Node\Expr\Assign;
 
-class ApiController extends AbstractController
+class ApiAjaxController extends AbstractController
 {
     public function buscarProducto(String $request)
     {
