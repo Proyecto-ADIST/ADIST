@@ -45,6 +45,26 @@ class ProductoRepository extends ServiceEntityRepository
         }
     }
 
+    
+    /*
+    * Buscador Ajax
+    */
+    
+    public function findBySimilarName($value)
+    {
+        $qb = $this->createQueryBuilder('p');
+        return $qb->andWhere(
+            $qb->expr()->like('p.nombre', ':val')
+            )
+            ->setParameter('val', $value)
+            ->orderBy('p.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+   
+
     // /**
     //  * @return Producto[] Returns an array of Producto objects
     //  */
