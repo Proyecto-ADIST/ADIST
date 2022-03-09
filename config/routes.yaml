@@ -13,3 +13,7 @@ app_logout:
 app_register:
   path: /register
   controller: App\Controller\RegistrationController::register
+
+app_usuarios:
+  path: /usuarios
+  controller: App\Controller\UsuariosController::usuarios

@@ -25,11 +25,16 @@
           <a class="nav-link" href="#">Pedidos</a>
         </li>
         <li class="nav-item">
-          <a class= "nav-link">Rol: <span style="color: green;">Repartidor</span></a>
+          <a class="nav-link" href="#">Productos</a>
         </li>
-        
+        <li class="nav-item">
+          <a class= "nav-link">Rol: <span style="color: green;">Repartidor</span></a>
+        </li>     
       </ul>
       
+        <form class="d-flex">
+          <input type="text"  class="form-control me-2" name="busqueda" placeholder="Buscar producto..."></br>        
+        </form>
       <form class="d-flex">
         <input type="text"  class="form-control me-2" name="busqueda" placeholder="Buscar producto..."></br>
         
@@ -38,6 +43,8 @@
       
 
 
+					<a class="d-flex nav-link" href="{{ path('app_logout') }}"><span style="color: red;">Cerrar Sesión</span></a>
+        </div>
       <a class="d-flex nav-link" href="{{ path('app_logout') }}"><span style="color: red;">Cerrar Sesión</span></a>
     </div>
 
@@ -51,3 +58,7 @@
 </nav>
 
 
+
+        <section id="tabla_resultado">
+  <!-- Aqui se despliega la tabla resultado -->
+      </section>
