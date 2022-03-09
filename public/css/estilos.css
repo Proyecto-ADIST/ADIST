@@ -1,3 +1,15 @@
 .bienvenido{
     color: blue;
 }
+
+.apartados{
+    color: black !important;
+}
+
+.colorFondo{
+    background-color: #94CDFA;
+}
+
+.descripcion{
+    color: green !important;
+}

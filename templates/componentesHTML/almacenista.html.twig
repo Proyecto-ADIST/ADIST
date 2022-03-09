@@ -1,65 +1,67 @@
-<style>
+{% extends 'base.html.twig' %}
 
-	.adist {
-		font-family: Verdana;
-	}
-</style>
+{% block body %}
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+				<img src="/images/logo.svg" style="width: 6%;">
+				<a class="navbar-brand " href="#">
+					<h1>ADIST</h1>
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item me-2">
+							<a class="nav-link apartados">Tiendas</a>
+						</li>
+						<li class="nav-item me-2">
+							<a class="nav-link apartados">Pedidos</a>
+						</li>
+						<li class="nav-item me-2">
+							<a class="nav-link apartados">Productos</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link">Rol:
+								<span style="color: green;">Almacenista</span>
+							</a>
+						</li>
+						<li class="nav-item me-2">
+							<a class="nav-link">Nombre:
+								{{ app.user.name }}</a>
+						</li>
+						<li class="nav-item me-2">
+							<a class="nav-link">Apellido:
+								{{ app.user.lastname }}</a>
+						</li>
+						<li class="nav-item me-1">
+							<a class="nav-link">Correo:
+								{{ app.user.email }}</a>
+						</li>
+
+					</ul>
+
+					<form class="d-flex">
+						<input type="text" class="form-control" name="busqueda" placeholder="Buscar producto..."></br>
+				</form>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<div class="container-fluid">
-		<a class="navbar-brand " href="#">
-			<h1>ADIST</h1>
-		</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<li class="nav-item">
-					<a class="nav-link" aria-current="page" href="#">Tiendas</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Pedidos</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Productos</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link">Rol:
-						<span style="color: green;">Almacenista</span>
-					</a>
-				</li>
-				<li class="nav-item ms-3 me-3">
-					<a class="nav-link">Nombre:
-						{{ app.user.name }}</a>
-				</li>
-				<li class="nav-item me-3">
-					<a class="nav-link">Apellido:
-						{{ app.user.lastname }}</a>
-				</li>
-				<li class="nav-item me-3">
-					<a class="nav-link">Correo:
-						{{ app.user.email }}</a>
-				</li>
-
-			</ul>
-
-			<form class="d-flex">
-				<input type="text" class="form-control me-2" name="busqueda" placeholder="Buscar producto..."></br>
+				<a class="d-flex nav-link" href="{{ path('app_logout') }}">
+					<span style="color: red;">Cerrar Sesión</span>
+				</a>
+			</div>
 		</form>
+</header>
 
+		<div>
 
-		<a class="d-flex nav-link" href="{{ path('app_logout') }}">
-			<span style="color: red;">Cerrar Sesión</span>
-		</a>
+			<section
+				id="tabla_resultado"><!-- Aqui se despliega la tabla resultado -->
+			</section>
+		</div>
 	</div>
-</form>
+</nav>
+<sectionid="tabla_resultado"><!-- Aqui se despliega la tabla resultado --></section>
 
-
-<div>
-
-	<section
-		id="tabla_resultado"><!-- Aqui se despliega la tabla resultado -->
-	</section>
-</div></div></nav><sectionid="tabla_resultado"><!-- Aqui se despliega la tabla resultado --></section>
+{% endblock %}
