@@ -193,7 +193,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->pedidos->contains($pedido)) {
             $this->pedidos[] = $pedido;
-            $pedido->setIdUser($this);
+            $pedido->setUser($this);
         }
 
         return $this;
@@ -203,8 +203,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->pedidos->removeElement($pedido)) {
             // set the owning side to null (unless already changed)
-            if ($pedido->getIdUser() === $this) {
-                $pedido->setIdUser(null);
+            if ($pedido->getUser() === $this) {
+                $pedido->setUser(null);
             }
         }
 

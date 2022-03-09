@@ -109,7 +109,7 @@ class Producto
     {
         return $this->pedidos;
     }
-
+    
     public function addPedido(Pedido $pedido): self
     {
         if (!$this->pedidos->contains($pedido)) {

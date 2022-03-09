@@ -22,7 +22,7 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        //********************USUARIOS*******************//
+        //------------------USUARIOS------------------//
         // Usuario repartidor
         $usuario1 = new User();
         $usuario1->setName("Laura");
@@ -61,7 +61,7 @@ class AppFixtures extends Fixture
 
 
 
-        //********************TIENDAS*******************//
+        //------------------TIENDAS------------------//
 
         // Tienda 1
         $tienda1 = new Tienda();
@@ -85,7 +85,7 @@ class AppFixtures extends Fixture
         $tienda3->setDireccion("C./ Pozo Nº 3");
         $manager->persist($tienda3);
 
-        //********************PRODUCTOS*******************//
+        //------------------PRODUCTOS------------------//
 
         // Producto 1
         $producto1 = new Producto();
@@ -113,8 +113,8 @@ class AppFixtures extends Fixture
 
 
 
-        //********************PEDIDOS*******************//
-
+        //------------------PEDIDOS------------------//
+        
         // Pedido 1
         $pedido1 = new Pedido();
         $pedido1->setUser($usuario1);
@@ -122,7 +122,16 @@ class AppFixtures extends Fixture
         $pedido1->setTienda($tienda1);
         $manager->persist($pedido1);
 
-        //********************PEDIDOS_PRODUCTOS*******************//
+        // Pedido 2
+        $pedido2 = new Pedido();
+        $pedido2->setUser($usuario1);
+        $pedido2->addProducto($producto2);
+        $pedido2->setTienda($tienda2);
+        $manager->persist($pedido2);
+
+        
+
+        //------------------PEDIDOS_PRODUCTOS------------------//
 
         $manager->flush();
     }

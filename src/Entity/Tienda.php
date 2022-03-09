@@ -80,7 +80,7 @@ class Tienda
     {
         if (!$this->pedidos->contains($pedido)) {
             $this->pedidos[] = $pedido;
-            $pedido->setIdTienda($this);
+            $pedido->setTienda($this);
         }
 
         return $this;
@@ -90,8 +90,8 @@ class Tienda
     {
         if ($this->pedidos->removeElement($pedido)) {
             // set the owning side to null (unless already changed)
-            if ($pedido->getIdTienda() === $this) {
-                $pedido->setIdTienda(null);
+            if ($pedido->getTienda() === $this) {
+                $pedido->setTienda(null);
             }
         }
 
