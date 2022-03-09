@@ -114,7 +114,7 @@ class Producto
     {
         if (!$this->pedidos->contains($pedido)) {
             $this->pedidos[] = $pedido;
-            $pedido->addIdProducto($this);
+            $pedido->addProducto($this);
         }
 
         return $this;
@@ -123,7 +123,7 @@ class Producto
     public function removePedido(Pedido $pedido): self
     {
         if ($this->pedidos->removeElement($pedido)) {
-            $pedido->removeIdProducto($this);
+            $pedido->removeProducto($this);
         }
 
         return $this;

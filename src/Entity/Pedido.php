@@ -23,22 +23,22 @@ class Pedido
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="pedidos")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $idUser;
+    private $user;
 
     /**
      * @ORM\ManyToMany(targetEntity=Producto::class, inversedBy="pedidos")
      */
-    private $idProducto;
+    private $producto;
 
     /**
      * @ORM\ManyToOne(targetEntity=Tienda::class, inversedBy="pedidos")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $idTienda;
+    private $tienda;
 
     public function __construct()
     {
-        $this->idProducto = new ArrayCollection();
+        $this->producto = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -46,14 +46,14 @@ class Pedido
         return $this->id;
     }
 
-    public function getIdUser(): ?User
+    public function getUser(): ?User
     {
-        return $this->idUser;
+        return $this->user;
     }
 
-    public function setIdUser(?User $idUser): self
+    public function setUser(?User $user): self
     {
-        $this->idUser = $idUser;
+        $this->user = $user;
 
         return $this;
     }
@@ -61,35 +61,35 @@ class Pedido
     /**
      * @return Collection<int, Producto>
      */
-    public function getIdProducto(): Collection
+    public function getProducto(): Collection
     {
-        return $this->idProducto;
+        return $this->producto;
     }
 
-    public function addIdProducto(Producto $idProducto): self
+    public function addProducto(Producto $producto): self
     {
-        if (!$this->idProducto->contains($idProducto)) {
-            $this->idProducto[] = $idProducto;
+        if (!$this->producto->contains($producto)) {
+            $this->producto[] = $producto;
         }
 
         return $this;
     }
 
-    public function removeIdProducto(Producto $idProducto): self
+    public function removeProducto(Producto $producto): self
     {
-        $this->idProducto->removeElement($idProducto);
+        $this->producto->removeElement($producto);
 
         return $this;
     }
 
-    public function getIdTienda(): ?Tienda
+    public function getTienda(): ?Tienda
     {
-        return $this->idTienda;
+        return $this->tienda;
     }
 
-    public function setIdTienda(?Tienda $idTienda): self
+    public function setTienda(?Tienda $tienda): self
     {
-        $this->idTienda = $idTienda;
+        $this->tienda = $tienda;
 
         return $this;
     }

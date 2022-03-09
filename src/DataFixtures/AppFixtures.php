@@ -2,15 +2,119 @@
 
 namespace App\DataFixtures;
 
+
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Entity\User;
+use App\Entity\Tienda;
+use App\Entity\Pedido;
+use App\Entity\Producto;
 
 class AppFixtures extends Fixture
-{
+{   
+    private $passwordEncoder;
+
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $this->passwordEncoder = $passwordEncoder;
+    }
+    
     public function load(ObjectManager $manager): void
     {
-        // $product = new Product();
-        // $manager->persist($product);
+        //********************USUARIOS*******************//
+        // Usuario repartidor
+        $usuario1 = new User();
+        $usuario1->setName("Laura");
+        $usuario1->setLastname("Moreno");
+        $usuario1->setEmail("repartidor@gmail.com");
+        $usuario1->setPassword($this->passwordEncoder->encodePassword(
+            $usuario1,
+            '123456' // La contraseña
+        ));
+        $usuario1->setRoles(array("ROLE_REPARTIDOR"));
+        $manager->persist($usuario1);
+
+        // Usuario almacenista
+        $usuario2 = new User();
+        $usuario2->setName("Jesus");
+        $usuario2->setLastname("Pardal");
+        $usuario2->setEmail("almacenista@gmail.com");
+        $usuario2->setPassword($this->passwordEncoder->encodePassword(
+            $usuario2,
+            '123456' // La contraseña
+        ));
+        $usuario2->setRoles(array("ROLE_ALMACENISTA"));
+        $manager->persist($usuario2);
+
+        // Usuario administrador
+        $usuario3 = new User();
+        $usuario3->setName("Manuel");
+        $usuario3->setLastname("Gómez");
+        $usuario3->setEmail("administrador@gmail.com");
+        $usuario3->setPassword($this->passwordEncoder->encodePassword(
+            $usuario3,
+            '123456'
+        ));
+        $usuario3->setRoles(array("ROLE_ADMIN"));
+        $manager->persist($usuario3);
+
+
+
+        //********************TIENDAS*******************//
+
+        // Tienda 1
+        $tienda1 = new Tienda();
+        $tienda1->setNombre("Manoli's Shop");
+        $tienda1->setDireccion("C./ Santa Cruz Nº8");
+        $manager->persist($tienda1);
+
+        $manager->flush();
+
+        // Tienda 2
+        $tienda2 = new Tienda();
+        $tienda2->setNombre("Mercadona");
+        $tienda2->setDireccion("C./ Amapola Nº10");
+        $manager->persist($tienda2);
+
+        $manager->flush();
+
+        // Tienda 3
+        $tienda3 = new Tienda();
+        $tienda3->setNombre("Aldi");
+        $tienda3->setDireccion("C./ Pozo Nº 3");
+        $manager->persist($tienda3);
+
+        //********************PRODUCTOS*******************//
+
+        // Producto 1
+        $producto1 = new Producto();
+        $producto1->setNombre("Platano");
+        $producto1->setTipoProducto("Fruta");
+        $producto1->setPrecio(0.59);
+        $producto1->setStock(48);
+        $manager->persist($producto1);
+
+        // Producto 2
+        $producto2 = new Producto();
+        $producto2->setNombre("Queso");
+        $producto2->setTipoProducto("Lacteo");
+        $producto2->setPrecio(1.59);
+        $producto2->setStock(10);
+        $manager->persist($producto2);
+
+        // Producto 3
+        $producto3 = new Producto();
+        $producto3->setNombre("Lechuga");
+        $producto3->setTipoProducto("Verdura");
+        $producto3->setPrecio(0.19);
+        $producto3->setStock(33);
+        $manager->persist($producto3);
+
+
+
+        //********************PEDIDOS*******************//
+        //********************PEDIDOS_PRODUCTOS*******************//
 
         $manager->flush();
     }
