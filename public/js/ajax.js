@@ -1,6 +1,5 @@
 
-
-function obtenerProducto(id){
+function obtenerProductoPorTipoProducto(id){
 
         var urlBusqueda = "/api/productos/" + id;
         
@@ -12,6 +11,15 @@ function obtenerProducto(id){
                 },
                 success:  function (response) {
                         $("#resultado").html(response);
+                        //pintarProducto();
                 }
         });
+
+        
     }
+
+function pintarProducto(response){
+
+
+
+}
