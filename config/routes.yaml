@@ -48,10 +48,25 @@ api_get_tiendas:
   controller: App\Controller\ApiController::getTiendas
   methods: ["GET"]
 
+api_get_pedidos:
+  path: /api/pedidos
+  controller: App\Controller\ApiController::getPedidos
+  methods: ["GET"]
+
 api_post_producto:
   path: /api/productos
   controller: App\Controller\ApiController::postProducto
   methods: ["POST"]
+
+api_post_tienda:
+  path: /api/tiendas
+  controller: App\Controller\ApiController::postTienda
+  methods: ["POST"]
+
+api_delete_tienda:
+  path: /api/tiendas/{id}
+  controller: App\Controller\ApiController::deleteTienda
+  methods: ["DELETE"]
 
 api_delete_producto:
   path: /api/productos/{id}
