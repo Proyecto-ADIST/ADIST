@@ -12,27 +12,25 @@ use PhpParser\Node\Expr\Assign;
 
 class ApiAjaxController extends AbstractController
 {
-    public function buscarProducto(String $request)
+    public function buscarProducto(Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $productos = $entityManager->getRepository(Producto::class)->findBySimilarName($request);
+        $productos = $entityManager->getRepository(Producto::class)->findBySimilarName($request->request->get("nombre"));
         //($request->request->get("nombre"));
 
 
 
         $results = new \stdClass();
         $results->count = count($productos);
-        $results->results = array();
+        $results = array();
 
 
         foreach ($productos as $producto) {
-            $result = new \stdClass();
-            $result->id = $producto->getId();
-            $result->url = $this->generateUrl('api_buscar_producto', [
-                'id' => $result->id,
-            ], UrlGeneratorInterface::ABSOLUTE_URL);
+            $result_producto = new \stdClass();
+            $result_producto->id = $producto->getId();
+            $result_producto->nombre = $producto->getNombre();
 
-            array_push($results->results, $result);
+            array_push($results, $result_producto);
         }
 
         return new JsonResponse($results);
