@@ -209,6 +209,41 @@ class ApiController extends AbstractController
         // Devolvemos el resultado en formato JSON
         return new JsonResponse($results);
     }
+
+    //PROBLEMA: TE DEVUELVE LOS USERS Y LOS PRODUCTOS EN EL POSTMAN RAROS
+    function getPedidos()
+    {
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $pedidos = $entityManager->getRepository(Pedido::class)->findAll();
+
+
+        if ($pedidos == null) {
+            return new JsonResponse([
+                'error' => 'No se han encontrado pedidos'
+            ], 404);
+        }
+
+
+        $results = new \stdClass();
+        $results->count = count($pedidos);
+        $results->results = array();
+
+
+        foreach ($pedidos as $pedido) {
+            $result = new \stdClass();
+            $result->id = $pedido->getId();
+            $result->user = $pedido->getUser();
+            $result->producto = $pedido->getProducto();
+            $result->tienda = $pedido->getTienda();
+
+            array_push($results->results, $result);
+        }
+
+        // Devolvemos el resultado en formato JSON
+        return new JsonResponse($results);
+    }
+
     /*
     function postUsuario(Request $request)
     {
@@ -267,6 +302,32 @@ class ApiController extends AbstractController
         return new JsonResponse($result, 201);
     }
 
+    function postTienda(Request $request)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $tienda = $entityManager->getRepository(Tienda::class)->findOneBy(['nombre' => $request->request->get("nombre")]);
+        if ($tienda) {
+            return new JsonResponse([
+                'error' => 'La tienda ya está registrada'
+            ], 404);
+        }
+
+        $tienda = new Tienda();
+        $tienda->setNombre($request->request->get("nombre"));
+        $tienda->setDireccion($request->request->get("direccion"));
+        $entityManager->persist($tienda);
+        $entityManager->flush();
+
+      
+        $result = new \stdClass();
+        $result->id = $tienda->getId();
+        $result->nombre = $tienda->getNombre();
+        $result->direccion = $tienda->getDireccion();
+
+        return new JsonResponse($result, 201);
+    }
+
+    //PROBLEMA: NO LO BORRA POR LA RELACIÓN MANY TO MANY DEL MAPPED EN PRODUCTO 
     function deleteProducto($id)
     {
         $entityManager = $this->getDoctrine()->getManager();
@@ -280,7 +341,23 @@ class ApiController extends AbstractController
         $entityManager->remove($producto);
         $entityManager->flush();
 
+        return new JsonResponse(null, 204);
+    }
+
+    //PROBLEMA: NO LO BORRA POR LA RELACIÓN DEL MAPPED EN TIENDA
+    function deleteTienda($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $tienda = $entityManager->getRepository(Tienda::class)->find($id);
+        if ($tienda == null) {
+            return new JsonResponse([
+                'error' => 'La tienda no existe'
+            ], 404);
+        }
         
+        $entityManager->remove($tienda);
+        $entityManager->flush();
+
         return new JsonResponse(null, 204);
     }
 
