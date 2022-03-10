@@ -35,6 +35,6 @@ api_get_user:
 
 api_buscar_producto:
   path: /findBySimilarName
-  controller: App\Controller\ApiController::findBySimilarName
+  controller: App\Controller\ApiAjaxController::findBySimilarName
   methods: ["POST"]
 
