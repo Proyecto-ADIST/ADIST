@@ -26,8 +26,7 @@ class ApiAjaxController extends AbstractController
 
 
         foreach ($productos as $producto) {
-            $result_producto = new \stdClass();
-            $result_producto->id = $producto->getId();
+            $result_producto = new \stdClass();            
             $result_producto->nombre = $producto->getNombre();
 
             array_push($results, $result_producto);
