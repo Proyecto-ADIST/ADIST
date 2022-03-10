@@ -26,7 +26,7 @@
 {% endblock %}
 
 
-{% block body %}
+{#% block body %}
 
 	{% if is_granted('ROLE_ADMIN') %}
 
@@ -37,7 +37,7 @@
 
 	{% if is_granted('ROLE_REPARTIDOR') %} {# || es or en twig#}
 
-		{% include 'componentesHTML/repartidor.html.twig' %}
+		{#% include 'componentesHTML/repartidor.html.twig' %}
 
 	{% endif %}
 
@@ -48,4 +48,4 @@
 
 	{% endif %}
 
-{% endblock %}
+{% endblock %#}

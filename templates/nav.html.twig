@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand-lg navbar-light colorFondo">
+			<div class="container-fluid">
+				<img src="/images/logo.svg" style="width: 6%;">
+				<a class="navbar-brand " href="#">
+					<h1>ADIST</h1>
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						
+						{% if is_granted('ROLE_REPARTIDOR') or is_granted('ROLE_ALMACENISTA') %}
+
+							<li class="nav-item">
+								<a class="nav-link apartados" href="#">Tiendas</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link apartados" href="#">Pedidos</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link apartados" href="#">Productos</a>
+							</li>
+
+
+						{% endif %}
+						<li class="nav-item">
+							<a class="nav-link">Rol:
+
+								{% if ( app.user.roles[0] == "ROLE_ADMIN" ) %}
+
+									<span class="descripcion">Administrador</span>
+
+								{% elseif ( app.user.roles[0] == "ROLE_REPARTIDOR" ) %}
+
+									<span class="descripcion">Repartidor</span>
+
+								{% else %}
+
+									<span class="descripcion">Almacenista</span>
+
+								{% endif %}
+
+							</a>
+						</li>
+
+						<li class="nav-item me-2">
+							<a class="nav-link">Nombre:
+								<span class="descripcion">{{ app.user.name }}</span>
+							</a>
+						</li>
+						<li class="nav-item me-3">
+							<a class="nav-link">Apellido:
+								<span class="descripcion">{{ app.user.lastname }}</span>
+							</a>
+						</li>
+						<li class="nav-item me-1">
+							<a class="nav-link">Correo:
+								<span class="descripcion">{{ app.user.email }}</span>
+							</a>
+						</li>
+					</ul>
+
+					{% if is_granted('ROLE_REPARTIDOR') or is_granted('ROLE_ALMACENISTA') %}
+						<form class="d-flex">
+							<input type="text" class="form-control me-1" name="busqueda" placeholder="Buscar producto..."></br>
+					</form>
+				{% endif %}
+
+			</div>
+			<a class="d-flex nav-link" href="{{ path('app_logout') }}">
+				<span style="color: red;">Cerrar Sesión</span>
+			</a>
+		</div>
+</nav>
