@@ -54,7 +54,7 @@ class ApiController extends AbstractController
 
         if ($productos == null) {
             return new JsonResponse([
-                'error' => 'No se han encontrados los Tweets'
+                'error' => 'No se han encontrados los productos'
             ], 404);
         }
 

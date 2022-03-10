@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>
-			{% block title %}Welcome!
+			{% block title %}ADIST
 			{% endblock %}
 		</title>
 
@@ -35,6 +35,18 @@
 
 		
 {% if is_granted('ROLE_REPARTIDOR') or is_granted('ROLE_ALMACENISTA') %}
+	<div clas="container">
+        <div class="row">
+            <div class="col">
+                <a>
+					Producto:<span class="descripcion">
+						{% php %} $producto->getNombre() {% php %}
+					</span>
+				</a>
+            </div>
+        </div>
+    </div>
+	
 	<div>
 
 		<section
