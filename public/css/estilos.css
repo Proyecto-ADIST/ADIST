@@ -17,13 +17,9 @@
     color: green !important;
 }
 
-.difuminado{
-    background-color: red;
-    /*background: linear-gradient(#e66465, #9198e5);*/
-}
-
 .formulario{
     font-family: sans-serif;
+    font-size: 20px;
 }
 
 
