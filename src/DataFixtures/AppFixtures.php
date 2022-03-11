@@ -10,6 +10,7 @@ use App\Entity\User;
 use App\Entity\Tienda;
 use App\Entity\Pedido;
 use App\Entity\Producto;
+use App\Entity\TipoProducto;
 
 class AppFixtures extends Fixture
 {   
@@ -85,33 +86,49 @@ class AppFixtures extends Fixture
         $tienda3->setDireccion("C./ Pozo Nº 3");
         $manager->persist($tienda3);
 
+
+        //------------------TIPO_PRODUCTOS------------------//
+
+        // Tipo Producto 1
+        $tipoProducto1 = new TipoProducto();
+        $tipoProducto1->setTipo("Fruta");
+        $manager->persist($tipoProducto1);
+
+        // Tipo Producto 2
+        $tipoProducto2 = new TipoProducto();
+        $tipoProducto2->setTipo("Lacteo");
+        $manager->persist($tipoProducto2);
+
+        // Tipo Producto 3
+        $tipoProducto3 = new TipoProducto();
+        $tipoProducto3->setTipo("Verdura");
+        $manager->persist($tipoProducto3);
+
         //------------------PRODUCTOS------------------//
 
         // Producto 1
         $producto1 = new Producto();
         $producto1->setNombre("Platano");
-        $producto1->setTipoProducto("Fruta");
         $producto1->setPrecio(0.59);
         $producto1->setStock(48);
+        $producto1->setTipoProducto($tipoProducto1);
         $manager->persist($producto1);
 
         // Producto 2
         $producto2 = new Producto();
-        $producto2->setNombre("Queso");
-        $producto2->setTipoProducto("Lacteo");
+        $producto2->setNombre("Yogurt");
         $producto2->setPrecio(1.59);
-        $producto2->setStock(10);
+        $producto2->setStock(33);
+        $producto2->setTipoProducto($tipoProducto2);
         $manager->persist($producto2);
 
         // Producto 3
         $producto3 = new Producto();
         $producto3->setNombre("Lechuga");
-        $producto3->setTipoProducto("Verdura");
-        $producto3->setPrecio(0.19);
-        $producto3->setStock(33);
+        $producto3->setPrecio(0.30);
+        $producto3->setStock(10);
+        $producto3->setTipoProducto($tipoProducto3);
         $manager->persist($producto3);
-
-
 
         //------------------PEDIDOS------------------//
         
@@ -123,11 +140,12 @@ class AppFixtures extends Fixture
         $manager->persist($pedido1);
 
         // Pedido 2
+        /*
         $pedido2 = new Pedido();
         $pedido2->setUser($usuario1);
         $pedido2->addProducto($producto2);
         $pedido2->setTienda($tienda2);
-        $manager->persist($pedido2);
+        $manager->persist($pedido2);*/
 
         
 

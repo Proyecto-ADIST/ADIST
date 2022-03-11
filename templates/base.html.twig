@@ -16,7 +16,7 @@
 			<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
 			<script src="/js/ajax.js"></script>
 			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-			<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+			<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫</text></svg>">
 			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -111,6 +111,7 @@
 									<tbody>
 
 
+<<<<<<< HEAD
 										{% for producto in productos %}
 											<tr>
 												<td>{{producto.nombre}}</td>
@@ -125,6 +126,22 @@
 												</td>
 											</tr>
 										{% endfor %}
+=======
+										{# {% for producto in productos %}
+																																																			<tr>
+																																																				<td>{{producto.nombre}}</td>
+																																																				<td>{{producto.stock}}</td>
+																																																				<td>
+																																																					<a class="edit" title="Edit" data-toggle="tooltip">
+																																																						<i class="material-icons">&#xE254;</i>
+																																																					</a>
+																																																					<a class="delete" title="Delete" data-toggle="tooltip">
+																																																						<i class="material-icons">&#xE872;</i>
+																																																					</a>
+																																																				</td>
+																																																			</tr>
+																																																		{% endfor %} #}
+>>>>>>> 706fad7330fd3140575b1c462af366f9f555f2fe
 
 
 									</tbody>

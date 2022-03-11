@@ -11,6 +11,7 @@ use App\Entity\Pedido;
 use App\Entity\Producto;
 use App\Entity\Tienda;
 use App\Entity\User;
+use App\Entity\TipoProducto;
 
 class ApiController extends AbstractController
 {
@@ -145,6 +146,36 @@ class ApiController extends AbstractController
         return new JsonResponse($results);
     }
 
+    function getTipoProducto($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $producto = $entityManager->getRepository(TipoProducto::class)->find($id);
+        // Si el Tipo de producto no existe devolvemos un error con código 404.
+        if ($producto == null) {
+            return new JsonResponse([
+                'error' => 'No tenemos este tipo de producto'
+            ], 404);
+        }
+        // Creamos un objeto genérico y lo rellenamos con la información.
+        $result = new \stdClass();
+        $result->id = $producto->getId();
+        $result->tipo = $producto->getNombre();
+        $result->tipo = $producto->getTipoProducto();
+        // Para enlazar al usuario, añadimos el enlace API para consultar su información.
+        $result->user = $this->generateUrl('api_get_user', [
+            'id' => $producto->getUser()->getId(),
+        ], UrlGeneratorInterface::ABSOLUTE_URL);
+        // Para enlazar a los usuarios que han dado like al tweet, añadimos sus enlaces API.
+        $result->likes = array();
+        foreach ($producto->getLikes() as $user) {
+            $result->likes[] = $this->generateUrl('api_get_user', [
+                'id' => $user->getId(),
+            ], UrlGeneratorInterface::ABSOLUTE_URL);
+        }
+        // Al utilizar JsonResponse, la conversión del objeto $result a JSON se hace de forma automática.
+        return new JsonResponse($result);
+    }
+
     function getTienda($id)
     {
         $entityManager = $this->getDoctrine()->getManager();
@@ -210,7 +241,6 @@ class ApiController extends AbstractController
         return new JsonResponse($results);
     }
 
-    //PROBLEMA: TE DEVUELVE LOS USERS Y LOS PRODUCTOS EN EL POSTMAN RAROS
     function getPedidos()
     {
 
@@ -244,34 +274,6 @@ class ApiController extends AbstractController
         return new JsonResponse($results);
     }
 
-    /*
-    function postUsuario(Request $request)
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-        $user = $entityManager->getRepository(User::class)->findOneBy(['email' => $request->request->get("email")]);
-        if ($user) {
-            return new JsonResponse([
-                'error' => 'User with this email already exists'
-            ], 409);
-        }
-        $user = new User();
-        $user->setName($request->request->get("name"));
-        $user->setLastname($request->request->get("lastname"));
-        $user->setEmail($request->request->get("email"));
-        $user->setPassword($request->request->get("password"));
-        //$user->setRoles($request->request->get("rol"));
-        $entityManager->persist($user);
-        $entityManager->flush();
-        $result = new \stdClass();
-        $result->id = $user->getId();
-        $result->email = $user->getEmail();
-        $result->roles = $user->getRoles();
-        $result->apellidos = $user->getLastname();
-        $result->nombre = $user->getName();
-        
-        return new JsonResponse($result, 201);
-    }*/
-
     function postProducto(Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
@@ -282,9 +284,11 @@ class ApiController extends AbstractController
             ], 404);
         }
 
+
+        $tipoProducto = $entityManager->getRepository(TipoProducto::class)->findOneBy(['tipo' => $request->request->get("tipo_producto")]);
         $producto = new Producto();
         $producto->setNombre($request->request->get("nombre"));
-        $producto->setTipoProducto($request->request->get("tipo_producto"));
+        $producto->setTipoProducto($tipoProducto);
         $producto->setPrecio($request->request->get("precio"));
         $producto->setStock($request->request->get("stock"));
         $entityManager->persist($producto);
@@ -294,7 +298,7 @@ class ApiController extends AbstractController
         $result = new \stdClass();
         $result->id = $producto->getId();
         $result->nombre = $producto->getNombre();
-        $result->tipo = $producto->getTipoProducto();
+        $result->tipo = $tipoProducto->getTipo();
         $result->precio = $producto->getPrecio();
         $result->stock = $producto->getStock();
     
@@ -327,7 +331,6 @@ class ApiController extends AbstractController
         return new JsonResponse($result, 201);
     }
 
-    //PROBLEMA: NO LO BORRA POR LA RELACIÓN MANY TO MANY DEL MAPPED EN PRODUCTO 
     function deleteProducto($id)
     {
         $entityManager = $this->getDoctrine()->getManager();
@@ -344,7 +347,7 @@ class ApiController extends AbstractController
         return new JsonResponse(null, 204);
     }
 
-    //PROBLEMA: NO LO BORRA POR LA RELACIÓN DEL MAPPED EN TIENDA
+
     function deleteTienda($id)
     {
         $entityManager = $this->getDoctrine()->getManager();

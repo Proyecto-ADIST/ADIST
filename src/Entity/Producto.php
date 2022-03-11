@@ -25,11 +25,6 @@ class Producto
     private $nombre;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $tipoProducto;
-
-    /**
      * @ORM\Column(type="float")
      */
     private $precio;
@@ -40,9 +35,18 @@ class Producto
     private $stock;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Pedido::class, mappedBy="idProducto")
+     * @ORM\ManyToMany(targetEntity=Pedido::class, mappedBy="producto")
      */
     private $pedidos;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=TipoProducto::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $tipo_producto;
+
+
+   
 
     public function __construct()
     {
@@ -62,18 +66,6 @@ class Producto
     public function setNombre(string $nombre): self
     {
         $this->nombre = $nombre;
-
-        return $this;
-    }
-
-    public function getTipoProducto(): ?string
-    {
-        return $this->tipoProducto;
-    }
-
-    public function setTipoProducto(string $tipoProducto): self
-    {
-        $this->tipoProducto = $tipoProducto;
 
         return $this;
     }
@@ -128,4 +120,17 @@ class Producto
 
         return $this;
     }
+
+    public function getTipoProducto(): ?TipoProducto
+    {
+        return $this->tipo_producto;
+    }
+
+    public function setTipoProducto(?TipoProducto $tipo_producto): self
+    {
+        $this->tipo_producto = $tipo_producto;
+
+        return $this;
+    }
+
 }
