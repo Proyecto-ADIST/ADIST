@@ -252,7 +252,6 @@ class ApiController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $pedidos = $entityManager->getRepository(Pedido::class)->findAll();
 
-
         if ($pedidos == null) {
             return new JsonResponse([
                 'error' => 'No se han encontrado pedidos'

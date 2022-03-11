@@ -18,6 +18,14 @@ app_usuarios:
   path: /usuarios
   controller: App\Controller\UsuariosController::usuarios
 
+app_productos:
+  path: /productos
+  controller: App\Controller\ProductosController::productos
+
+app_pedidos:
+  path: /pedidos
+  controller: App\Controller\PedidoController::pedidos
+
 api_get_usuario:
   path: /api/usuarios/{id}
   controller: App\Controller\ApiController::getUsuario
