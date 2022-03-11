@@ -42,3 +42,46 @@ Proyecto Grupal ADIST
 3. Hacer una copia del archivo ``.env`` llamada ``.env.local`` y personalizar la configuración de la base de datos.
 4. Ejecutar ``php bin/console doctrine:migrations:migrate`` para ejecutar las migraciones
 5. Ejecutar ``php bin/console doctrine:fixtures:load`` para cargar los datos de ejemplo. (Te purga la base de datos)
+
+# ADIST - Administración y Distribución 
+
+Adist, es un software desarrollado a través de symfony alojado en un gestor de BBDD remoto y desplegado a través de Heroku que automatizará el proceso de compra-venta de una empresa que cuente con almacén y distribuidores, falicitará así la comunicación entra las partes y la gestión de datos desde almacén.
+
+Tendrá distintas interfaces, para administrador, repartidor y almacenista.
+
+## Comenzando 🚀
+
+Para poder echar un vistazo y ver como funciona:
+
+1. Instala symfony y actualiza composer
+2. Clona el proyecto 
+3. Importa los datos a tu base de datos local a través de los comandos:
+    - 'php bin/console doctrine:migrations:migrate' para ejecutar las migraciones.
+    - 'php bin/console doctrine:fixtures:load' para cargar los datos de ejemplo.
+4. Ejecuta 'symfony server:start' para arrancar el proyecto.
+
+Mira **Despliegue** para conocer como desplegar el proyecto.
+
+## Despliegue 📦
+
+Para desplegar recomandamos Heroku y seguir el siguiente tutorial:
+https://devcenter.heroku.com/articles/deploying-symfony4
+
+Recuerda cambiar de dev a prod e importar las variables de entornos en la pestaña settings de la interfaz de Heroku.
+
+## Construido con 🛠️
+
+* Symfony - El framework web usado
+* PHP, HTML, TWIG, AJAX
+* RemoteMySql - Base de datos
+* Herokku - Despliegue
+
+## Autores ✒️
+
+* **Antonio Jesús Aranda Cañada** ► [haxezeta](https://github.com/haxezeta)
+* **Pablo Cabeza Acal** ► [cabeezaa0](https://github.com/cabeezaa0)
+* **Francisco José Cabeza Acal** ► [Langdom91](https://github.com/Langdom91)
+
+
+## Gracias a compañeros de clase y profesores por su inestimable ayuda en el desarrollo del proyecto 🎁
+
