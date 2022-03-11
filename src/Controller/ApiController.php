@@ -132,7 +132,12 @@ class ApiController extends AbstractController
             $result = new \stdClass();
             $result->id = $producto->getId();
             $result->nombre = $producto->getNombre();
-            $result->tipo = $producto->getTipoProducto();
+            //$result->tipo = $producto->getTipoProducto();
+            // Para enlazar al usuario, añadimos el enlace API para consultar su información.
+            $result->user = $this->generateUrl('api_get_usuario', [
+                'id' => $producto->getUser()->getId(),
+            ], UrlGeneratorInterface::ABSOLUTE_URL);
+            $result->tipo = $this->generateUrl('api_get_usuario', ['id' => $user->getId()]);
             $result->precio = $producto->getPrecio();
             $result->stock = $producto->getStock();
             $result->url = $this->generateUrl('api_get_producto', [
@@ -294,14 +299,14 @@ class ApiController extends AbstractController
         $entityManager->persist($producto);
         $entityManager->flush();
 
-      
+
         $result = new \stdClass();
         $result->id = $producto->getId();
         $result->nombre = $producto->getNombre();
         $result->tipo = $tipoProducto->getTipo();
         $result->precio = $producto->getPrecio();
         $result->stock = $producto->getStock();
-    
+
 
         return new JsonResponse($result, 201);
     }
@@ -322,7 +327,7 @@ class ApiController extends AbstractController
         $entityManager->persist($tienda);
         $entityManager->flush();
 
-      
+
         $result = new \stdClass();
         $result->id = $tienda->getId();
         $result->nombre = $tienda->getNombre();
@@ -340,7 +345,7 @@ class ApiController extends AbstractController
                 'error' => 'El producto no existe'
             ], 404);
         }
-        
+
         $entityManager->remove($producto);
         $entityManager->flush();
 
@@ -357,11 +362,10 @@ class ApiController extends AbstractController
                 'error' => 'La tienda no existe'
             ], 404);
         }
-        
+
         $entityManager->remove($tienda);
         $entityManager->flush();
 
         return new JsonResponse(null, 204);
     }
-
 }

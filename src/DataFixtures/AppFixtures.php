@@ -140,14 +140,11 @@ class AppFixtures extends Fixture
         $manager->persist($pedido1);
 
         // Pedido 2
-        /*
         $pedido2 = new Pedido();
         $pedido2->setUser($usuario1);
         $pedido2->addProducto($producto2);
         $pedido2->setTienda($tienda2);
-        $manager->persist($pedido2);*/
-
-        
+        $manager->persist($pedido2);
 
         //------------------PEDIDOS_PRODUCTOS------------------//
 
