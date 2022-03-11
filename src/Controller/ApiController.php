@@ -127,17 +127,13 @@ class ApiController extends AbstractController
         $results->count = count($productos);
         $results->results = array();
 
-
+        
         foreach ($productos as $producto) {
+            $tipoProducto = $entityManager->getRepository(TipoProducto::class)->find($producto->getTipoProducto());
             $result = new \stdClass();
             $result->id = $producto->getId();
             $result->nombre = $producto->getNombre();
-            //$result->tipo = $producto->getTipoProducto();
-            // Para enlazar al usuario, añadimos el enlace API para consultar su información.
-            $result->user = $this->generateUrl('api_get_usuario', [
-                'id' => $producto->getUser()->getId(),
-            ], UrlGeneratorInterface::ABSOLUTE_URL);
-            $result->tipo = $this->generateUrl('api_get_usuario', ['id' => $user->getId()]);
+            $result->tipo = $tipoProducto->getTipo();
             $result->precio = $producto->getPrecio();
             $result->stock = $producto->getStock();
             $result->url = $this->generateUrl('api_get_producto', [
