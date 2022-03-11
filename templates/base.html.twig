@@ -32,6 +32,7 @@
 	</head>
 	<body>
 
+<<<<<<< HEAD
 		{% block nav %}
 			{% include "nav.html.twig" %}
 		{% endblock %}
@@ -56,6 +57,55 @@
 						<div class="text-center mb-3 mt-4">
 							<h1>Tipos de productos</h1>
 							<h2 class="text-secondary mb-5">Elije un producto para añadr a la lista de pedidos</h2>
+=======
+	{% block nav %}
+		{% include "nav.html.twig" %}
+	{% endblock %}
+	{% block body %}
+
+
+		
+{% if is_granted('ROLE_REPARTIDOR') or is_granted('ROLE_ALMACENISTA') %}
+	<div clas="container">
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-lg btn-primary" type="submit" onclick="obtenerProductoPorTipoProducto(1)">Frutas</button>
+            </div>
+			<div class="col">
+                <button class="btn btn-lg btn-primary" type="submit" onclick="obtenerProductoPorTipoProducto(2)">Lacteos</button>
+            </div>
+        </div>
+    </div>
+	
+	<div>
+
+		<section
+			id="tabla_resultado"><!-- Aqui se despliega la tabla resultado -->
+		</section>
+	</div>
+{% endif %}
+
+{% if is_granted('ROLE_ADMIN') %}
+	<main role="main">
+
+		<div class="container">
+
+			<div class="row row-cols-1 row-cols-md-3 g-4 mt-5 ms-5">
+
+				<div class="col ms-5">
+
+					<div class="card text-center ms-5">
+						<a href="{{ path('app_register') }}"><img src="/images/nuevo.png" class="car-img-top img-fluid"></a>
+						<div class=" card bg-violet h-100">
+							<div class="card-body d-flex flex-column">
+								<li class="card-title text-light">
+									<a class="card-text text-align-center">
+										<span style="color: black;">Crear Nuevo Usuario</span>
+									</a>
+								</li>
+								<a href="{{ path('app_register') }}" class="btn btn-success">Ir al registro</a>
+							</div>
+>>>>>>> 2702a733b651c4a0b2df1a3739775c3ff9b380ef
 						</div>
 
 						<div class="row mt-5">
