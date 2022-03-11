@@ -87,11 +87,94 @@
 			{% endif %}
 
 			{% if is_granted('ROLE_ALMACENISTA') %}
-			
-			<main role="main">
-				<div class="">
-				</div>
-			</main>
+
+				<main role="main">
+					<div class="container-lg">
+						<div class="table-responsive">
+							<div class="table-wrapper">
+								<div class="table-title">
+									<div class="row">
+										<div class="col-sm-8 mb-5">
+											<h2>Lista de
+												<b>Usuarios</b>
+											</h2>
+										</div>
+									</div>
+								</div>
+								<table class="table table-bordered">
+									<thead>
+										<tr>
+											<th>Nombre</th>
+											<th>Stock</th>
+										</tr>
+									</thead>
+									<tbody>
+
+
+										{% for producto in productos %}
+											<tr>
+												<td>{{producto.nombre}}</td>
+												<td>{{producto.stock}}</td>
+												<td>
+													<a class="edit" title="Edit" data-toggle="tooltip">
+														<i class="material-icons">&#xE254;</i>
+													</a>
+													<a class="delete" title="Delete" data-toggle="tooltip">
+														<i class="material-icons">&#xE872;</i>
+													</a>
+												</td>
+											</tr>
+										{% endfor %}
+
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+						<div class="table-responsive">
+							<div class="table-wrapper">
+								<div class="table-title">
+									<div class="row">
+										<div class="col-sm-8 mb-5">
+											<h2>Lista de
+												<b>Usuarios</b>
+											</h2>
+										</div>
+									</div>
+								</div>
+								<table class="table table-bordered">
+									<thead>
+										<tr>
+											<th>Nombre</th>
+											<th>Stock</th>
+										</tr>
+									</thead>
+									<tbody>
+
+
+										{% for usuario in usuarios %}
+											<tr>
+												<td>{{producto.nombre}}</td>
+												<td>{{producto.stock}}</td>
+												<td>
+													<a class="edit" title="Edit" data-toggle="tooltip">
+														<i class="material-icons">&#xE254;</i>
+													</a>
+													<a class="delete" title="Delete" data-toggle="tooltip">
+														<i class="material-icons">&#xE872;</i>
+													</a>
+												</td>
+											</tr>
+										{% endfor %}
+
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</main>
 
 			{% endif %}
 
