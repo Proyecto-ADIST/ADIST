@@ -20,6 +20,7 @@ function obtenerProductoPorTipoProducto(id){
 
 function pintarProducto(response){
 
+        $response.id;
 
 
 }

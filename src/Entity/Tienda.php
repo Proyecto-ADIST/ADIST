@@ -30,7 +30,7 @@ class Tienda
     private $direccion;
 
     /**
-     * @ORM\OneToMany(targetEntity=Pedido::class, mappedBy="idTienda", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Pedido::class, mappedBy="tienda", orphanRemoval=true)
      */
     private $pedidos;
 
