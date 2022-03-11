@@ -38,6 +38,11 @@ api_get_productos:
   controller: App\Controller\ApiController::getProductos
   methods: ["GET"]
 
+api_get_tipoproducto:
+  path: /api/tipoproducto/{id}
+  controller: App\Controller\ApiController::getTipoProducto
+  methods: ["GET"]
+
 api_get_tienda:
   path: /api/tiendas/{id}
   controller: App\Controller\ApiController::getTienda
