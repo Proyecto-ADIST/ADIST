@@ -241,7 +241,6 @@ class ApiController extends AbstractController
         return new JsonResponse($results);
     }
 
-    //PROBLEMA: TE DEVUELVE LOS USERS Y LOS PRODUCTOS EN EL POSTMAN RAROS
     function getPedidos()
     {
 
@@ -332,7 +331,6 @@ class ApiController extends AbstractController
         return new JsonResponse($result, 201);
     }
 
-    //PROBLEMA: NO LO BORRA POR LA RELACIÓN MANY TO MANY DEL MAPPED EN PRODUCTO 
     function deleteProducto($id)
     {
         $entityManager = $this->getDoctrine()->getManager();
@@ -349,7 +347,7 @@ class ApiController extends AbstractController
         return new JsonResponse(null, 204);
     }
 
-    //PROBLEMA: NO LO BORRA POR LA RELACIÓN DEL MAPPED EN TIENDA
+
     function deleteTienda($id)
     {
         $entityManager = $this->getDoctrine()->getManager();
