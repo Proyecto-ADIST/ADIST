@@ -18,6 +18,14 @@ function obtenerProductoPorTipoProducto(id) {
 
 }
 
+
+function pintarProducto(response) {
+
+        $response.id;
+
+
+}
+
 function obtenerProducto(id) {
 
         var urlBusqueda = "/api/productos/" + id;
@@ -56,12 +64,6 @@ function borrarProducto(id) {
 
 }
 
-function pintarProducto(response) {
-
-        $response.id;
-
-
-}
 
 function obtenerTiendas() {
 
