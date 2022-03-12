@@ -47,7 +47,7 @@ api_get_productos:
   methods: ["GET"]
 
 api_get_tipoproducto:
-  path: /api/tipoproducto/{id}
+  path: /api/tipoproducto/{nombre}
   controller: App\Controller\ApiController::getTipoProducto
   methods: ["GET"]
 
@@ -75,6 +75,16 @@ api_post_tienda:
   path: /api/tiendas
   controller: App\Controller\ApiController::postTienda
   methods: ["POST"]
+
+api_put_producto:
+  path: /api/productos/{id}
+  controller: App\Controller\ApiController::putProducto
+  methods: ["PUT"]
+
+api_put_tienda:
+  path: /api/tiendas/{id}
+  controller: App\Controller\ApiController::putTienda
+  methods: ["PUT"]
 
 api_delete_tienda:
   path: /api/tiendas/{id}

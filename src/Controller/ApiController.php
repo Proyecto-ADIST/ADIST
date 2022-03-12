@@ -94,18 +94,7 @@ class ApiController extends AbstractController
         $result->tipo = $producto->getTipoProducto();
         $result->precio = $producto->getPrecio();
         $result->stock = $producto->getStock();
-        // Para enlazar al usuario, añadimos el enlace API para consultar su información.
-        /*$result->user = $this->generateUrl('api_get_user', [
-            'id' => $producto->getUser()->getId(),
-        ], UrlGeneratorInterface::ABSOLUTE_URL);
-        // Para enlazar a los usuarios que han dado like al tweet, añadimos sus enlaces API.
-        $result->likes = array();
-        foreach ($producto->getLikes() as $user) {
-            $result->likes[] = $this->generateUrl('api_get_user', [
-                'id' => $user->getId(),
-            ], UrlGeneratorInterface::ABSOLUTE_URL);
-        }*/
-        // Al utilizar JsonResponse, la conversión del objeto $result a JSON se hace de forma automática.
+
         return new JsonResponse($result);
     }
 
@@ -146,11 +135,12 @@ class ApiController extends AbstractController
         // Devolvemos el resultado en formato JSON
         return new JsonResponse($results);
     }
-
-    function getTipoProducto($id)
+    
+    //PROBLEMA
+    function getTipoProducto($tipo)
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $producto = $entityManager->getRepository(TipoProducto::class)->find($id);
+        $producto = $entityManager->getRepository(TipoProducto::class)->find($tipo);
         // Si el Tipo de producto no existe devolvemos un error con código 404.
         if ($producto == null) {
             return new JsonResponse([
@@ -162,20 +152,11 @@ class ApiController extends AbstractController
         $result->id = $producto->getId();
         $result->tipo = $producto->getNombre();
         $result->tipo = $producto->getTipoProducto();
-        // Para enlazar al usuario, añadimos el enlace API para consultar su información.
-        $result->user = $this->generateUrl('api_get_user', [
-            'id' => $producto->getUser()->getId(),
-        ], UrlGeneratorInterface::ABSOLUTE_URL);
-        // Para enlazar a los usuarios que han dado like al tweet, añadimos sus enlaces API.
-        $result->likes = array();
-        foreach ($producto->getLikes() as $user) {
-            $result->likes[] = $this->generateUrl('api_get_user', [
-                'id' => $user->getId(),
-            ], UrlGeneratorInterface::ABSOLUTE_URL);
-        }
+        
         // Al utilizar JsonResponse, la conversión del objeto $result a JSON se hace de forma automática.
         return new JsonResponse($result);
     }
+    
 
     function getTienda($id)
     {
@@ -192,18 +173,7 @@ class ApiController extends AbstractController
         $result->id = $tienda->getId();
         $result->nombre = $tienda->getNombre();
         $result->direccion = $tienda->getDireccion();
-        // Para enlazar al usuario, añadimos el enlace API para consultar su información.
-        /*$result->user = $this->generateUrl('api_get_user', [
-            'id' => $producto->getUser()->getId(),
-        ], UrlGeneratorInterface::ABSOLUTE_URL);
-        // Para enlazar a los usuarios que han dado like al tweet, añadimos sus enlaces API.
-        $result->likes = array();
-        foreach ($producto->getLikes() as $user) {
-            $result->likes[] = $this->generateUrl('api_get_user', [
-                'id' => $user->getId(),
-            ], UrlGeneratorInterface::ABSOLUTE_URL);
-        }*/
-        // Al utilizar JsonResponse, la conversión del objeto $result a JSON se hace de forma automática.
+
         return new JsonResponse($result);
     }
 
@@ -329,6 +299,58 @@ class ApiController extends AbstractController
         $result->direccion = $tienda->getDireccion();
 
         return new JsonResponse($result, 201);
+    }
+
+    //PROBLEMA: NO SETEA EL ID DEL CAMPO TIPO_PRODUCTO_ID DE LA TABLA PRODUCTO
+    function putProducto(Request $request, $id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $producto = $entityManager->getRepository(Producto::class)->find($id);
+        if ($producto == null) {
+            return new JsonResponse([
+                'error' => 'El producto no existe'
+            ], 404);
+        }
+
+        $tipoProducto = $entityManager->getRepository(TipoProducto::class)->findOneBy(['tipo' => $request->request->get("tipo_producto")]);
+        $producto->setNombre($request->request->get("nombre"));
+        $producto->setTipoProducto($tipoProducto);
+        $producto->setPrecio($request->request->get("precio"));
+        $producto->setStock($request->request->get("stock"));
+        
+        $entityManager->flush();
+
+        $result = new \stdClass();
+        $result->id = $producto->getId();
+        $result->nombre = $producto->getNombre();
+        $result->tipo = $tipoProducto->getTipo();
+        $result->precio = $producto->getPrecio();
+        $result->stock = $producto->getStock();
+
+        return new JsonResponse($result);
+    }
+
+    function putTienda(Request $request, $id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $tienda = $entityManager->getRepository(Tienda::class)->find($id);
+        if ($tienda == null) {
+            return new JsonResponse([
+                'error' => 'La tienda no se encuentra'
+            ], 404);
+        }
+        
+        $tienda->setNombre($request->request->get("nombre"));
+        $tienda->setDireccion($request->request->get("direccion"));
+        $entityManager->flush();
+
+        $result = new \stdClass();
+        $result->id = $tienda->getId();
+        $result->nombre = $tienda->getNombre();
+        $result->direccion = $tienda->getDireccion();
+        
+
+        return new JsonResponse($result);
     }
 
     function deleteProducto($id)
