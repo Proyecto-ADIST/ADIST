@@ -28,196 +28,188 @@
 
 {% block body %}
 
-	{% if is_granted('ROLE_ADMIN') %}
+{% if is_granted('ROLE_ADMIN') %}
 
-		<main role="main">
+	<main role="main">
 
-			<div class="container">
+		<div class="container">
 
-				<div class="row row-cols-1 row-cols-md-3 g-4 mt-5 ms-5">
+			<div class="row row-cols-1 row-cols-md-3 g-4 mt-5 ms-5">
 
-					<div class="col ms-5">
+				<div class="col ms-5">
 
-						<div class="card text-center ms-5">
-							<a href="{{ path('app_register') }}"><img src="/images/nuevo.png" class="car-img-top img-fluid"></a>
-							<div class=" card bg-violet h-100">
-								<div class="card-body d-flex flex-column">
-									<li class="card-title text-light">
-										<a class="card-text text-align-center">
-											<span style="color: black;">Crear Nuevo Usuario</span>
-										</a>
-									</li>
-									<a href="{{ path('app_register') }}" class="btn btn-success">Ir al registro</a>
-								</div>
+					<div class="card text-center ms-5">
+						<a href="{{ path('app_register') }}"><img src="/images/nuevo.png" class="car-img-top img-fluid"></a>
+						<div class=" card bg-violet h-100">
+							<div class="card-body d-flex flex-column">
+								<li class="card-title text-light">
+									<a class="card-text text-align-center">
+										<span style="color: black;">Crear Nuevo Usuario</span>
+									</a>
+								</li>
+								<a href="{{ path('app_register') }}" class="btn btn-success">Ir al registro</a>
 							</div>
-
 						</div>
 
-						<div class="card text-center ms-5">
-							<a href="{{ path('app_usuarios') }}"><img src="/images/eliminar.png" class="car-img-top img-fluid"></a>
-							<div class=" card bg-violet h-100">
-								<div class="card-body d-flex flex-column">
-									<li class="card-title text-light">
-										<a class="card-text text-align-center">
-											<span style="color: black;">Eliminar usuario</span>
-										</a>
-									</li>
-									<a href="{{ path('app_usuarios') }}" class="btn btn-danger">Ver lista de Usuarios</a>
-								</div>
-							</div>
-
-						</div>
 					</div>
-				</main>
-
-
-			{% endif %}
-
-			{% if is_granted('ROLE_REPARTIDOR') %}
-
-				<main role="main">
-					<div clas="container">
-						<div class="text-center mb-3 mt-4">
-							<h1>Tipos de productos</h1>
-							<h2 class="text-secondary mb-5">Elije un producto para añadr a la lista de pedidos</h2>
-							<div class="row mt-5">
-								<div class="col-md mb-2">
-									<div class="card text-center">
-										<a href="{{ path('app_register') }}"><img src="images/fruta.jpg" class="card-img-top"></a>
-										<div class="card-body">
-											<a class="btn btn-lg" type="submit" onclick="obtenerProductoPorTipoProducto(1)" href="{{ path('app_register') }}">
-												<h5 class="card-title text-center">Frutas</h5>
-											</a>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md mb-2">
-									<div class="card text-center">
-										<a href="{{ path('app_register') }}"><img src="images/lacteos.jpg" class="card-img-top"></a>
-										<div class="card-body">
-											<a class="btn btn-lg" type="submit" onclick="obtenerProductoPorTipoProducto(1)" href="{{ path('app_register') }}">
-												<h5 class="card-title text-center">Lácteos</h5>
-											</a>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md mb-2">
-									<div class="card text-center">
-										<a href="{{ path('app_register') }}"><img src="images/verdura.jpg" class="card-img-top"></a>
-										<div class="card-body">
-											<a class="btn btn-lg" type="submit" onclick="obtenerProductoPorTipoProducto(1)" href="{{ path('app_register') }}">
-												<h5 class="card-title text-center">Verduras</h5>
-											</a>
-										</div>
-									</div>
-								</div>
+				</div>
+				<div class="col ms-5">
+					<div class="card text-center ms-5">
+						<a href="{{ path('app_usuarios') }}"><img src="/images/eliminar.png" class="car-img-top img-fluid"></a>
+						<div class=" card bg-violet h-100">
+							<div class="card-body d-flex flex-column">
+								<li class="card-title text-light">
+									<a class="card-text text-align-center">
+										<span style="color: black;">Eliminar usuario</span>
+									</a>
+								</li>
+								<a href="{{ path('app_usuarios') }}" class="btn btn-danger">Ver lista de Usuarios</a>
 							</div>
 						</div>
 					</div>
-				</main>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>{% endif %}{% if is_granted('ROLE_REPARTIDOR') %}
 
-			{% endif %}
+<main role="main">
 
-			{% if is_granted('ROLE_ALMACENISTA') %}
-
-				<main role="main">
-					<div class="container-lg">
-						<div class="row">
-							<div class="col">
-								<div class="table-responsive">
-									<div class="table-wrapper">
-										<div class="table-title">
-											<div class="row">
-												<div class="col-sm-8 mb-5">
-													<h2>Lista de
-														<b>Pedidos</b>
-													</h2>
-												</div>
-											</div>
-										</div>
-										<table class="table table-bordered">
-											<thead>
-												<tr>
-													<th>Nombre</th>
-													<th>Stock</th>
-												</tr>
-											</thead>
-											<tbody>
-
-
-												{% for producto in productos %}
-													<tr>
-														<td>{{producto.nombre}}</td>
-														<td>{{producto.stock}}</td>
-														<td>
-															<a class="edit" title="Edit" data-toggle="tooltip">
-																<i class="material-icons">&#xE254;</i>
-															</a>
-															<a class="delete" title="Delete" data-toggle="tooltip">
-																<i class="material-icons">&#xE872;</i>
-															</a>
-														</td>
-													</tr>
-												{% endfor %}
-
-
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</div>
-
-							<div class="col">
-								<div class="table-responsive">
-									<div class="table-wrapper">
-										<div class="table-title">
-											<div class="row">
-												<div class="col-sm-8 mb-5">
-													<h2>Lista de
-														<b>Pedidos</b>
-													</h2>
-												</div>
-											</div>
-										</div>
-										<table class="table table-bordered">
-											<thead>
-												<tr>
-													<th>Pedido nº</th>
-													<th>Repartidor</th>
-													<th>Tienda</th>
-													<th>Direccion</th>
-												</tr>
-											</thead>
-											<tbody>
-
-
-												{% for pedido in pedidos %}
-
-												<tr>
-													<td>{{pedido.id}}</td>
-													<td>{{pedido.user.name}}</td>
-													<td>{{pedido.tienda.nombre}}</td>
-													<td>{{pedido.tienda.direccion}}</td>
-													<td>
-														<a href="{{ path('app_pedidos') }}">Detalles del pedido</a>
-													</td>
-												</tr>
-
-												{% endfor %}
-
-
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</div>
+	<div class="container">
+		<div class="text-center mb-3 mt-4">
+			<h1>Tipos de productos</h1>
+			<h2 class="text-secondary mb-5">Elije un producto para añadir a la lista de pedidos</h2>
+			<div class="row mt-5">
+				<div class="col-md mb-2">
+					<div class="card text-center">
+						<a><img src="images/fruta.jpg" class="card-img-top"></a>
+						<div class="card-body">
+							<a class="btn btn-lg" type="submit" onclick="obtenerProductoPorTipoProducto(1)">
+								<h5 class="card-title text-center">Frutas</h5>
+							</a>
 						</div>
 					</div>
-				</main>
+				</div>
+				<div class="col-md mb-2">
+					<div class="card text-center">
+						<a><img src="images/lacteos.jpg" class="card-img-top"></a>
+						<div class="card-body">
+							<a class="btn btn-lg" type="submit">
+								<h5 class="card-title text-center">Lácteos</h5>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md mb-2">
+					<div class="card text-center">
+						<a><img src="images/verdura.jpg" class="card-img-top"></a>
+						<div class="card-body">
+							<a class="btn btn-lg" type="submit" onclick="obtenerProductoPorTipoProducto(1)">
+								<h5 class="card-title text-center">Verduras</h5>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+{% endif %}
+{% if is_granted('ROLE_ALMACENISTA') %}
+	<main role="main">
+		<div class="container-lg">
+			<div class="row">
+				<div class="col">
+					<div class="table">
+						<div class="table-wrapper">
+							<div class="table-title">
+								<div class="row">
+									<div class="col-sm-8 mb-5">
+										<h2>Lista de
+											<b>Productos</b>
+										</h2>
+									</div>
+								</div>
+							</div>
+
+							<table class="table table-bordered" style="border: solid 2px;">
+								<thead>
+									<tr>
+										<th>Nombre</th>
+										<th>Stock</th>
+									</tr>
+								</thead>
+								<tbody>
 
 
-			{% endif %}
+									{% for producto in productos %}
+										<tr>
+											<td>{{producto.nombre}}</td>
+											<td>{{producto.stock}}</td>
+											<td style="width: 19%;">
+												<a class="edit" title="Edit" data-toggle="tooltip">
+													<i class="material-icons">&#xE254;</i>
+												</a>
+												<a class="delete" title="Delete" data-toggle="tooltip">
+													<i class="material-icons">&#xE872;</i>
+												</a>
+											</td>
+										</tr>
+									{% endfor %}
 
-		{% endblock %}
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="table">
+						<div class="table-wrapper">
+							<div class="table-title">
+								<div class="row">
+									<div class="col-sm-8 mb-5">
+										<h2>Lista de
+											<b>Pedidos</b>
+										</h2>
+									</div>
+								</div>
+							</div>
+							<table class="table table-bordered" style="border: solid 2px;">
+								<thead>
+									<tr>
+										<th>Pedido nº</th>
+										<th>Repartidor</th>
+										<th>Tienda</th>
+										<th>Direccion</th>
+									</tr>
+								</thead>
+								<tbody>
+
+
+									{% for pedido in pedidos %}
+
+										<tr>
+											<td>{{pedido.id}}</td>
+											<td>{{pedido.user.name}}</td>
+											<td>{{pedido.tienda.nombre}}</td>
+											<td>{{pedido.tienda.direccion}}</td>
+											<td>
+												<a href="{{ path('app_pedidos') }}">Detalles del pedido</a>
+											</td>
+										</tr>
+
+									{% endfor %}
+
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+{% endif %}{% endblock %}

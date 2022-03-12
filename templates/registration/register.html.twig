@@ -4,11 +4,11 @@
 {% endblock %}
 
 {% block nav %}
-<header>
+	<header>
 
 		<nav class="navbar navbar-expand-lg navbar-light colorFondo">
 			<div class="container-fluid">
-			<img src="/images/logo.svg" style="width: 6%;">
+				<img src="/images/logo.svg" style="width: 6%;">
 				<a class="navbar-brand " href="#">
 					<h1>ADIST</h1>
 				</a>
@@ -36,45 +36,34 @@
 				</div>
 			</nav>
 		</header>
-    <div>
-		<a type="submit" onclick="history.back()" class="ms-3 mt-3"><span style="color: blue;">&laquo;</span><span class="ms-2" style="color: blue;">Volver</span></a>
-    </div>
-{% endblock %}
+		<div>
+			<a type="submit" onclick="history.back()" class="ms-3 mt-3">
+				<span style="color: blue;">&laquo;</span>
+				<span class="ms-2" style="color: blue;">Volver</span>
+			</a>
+		</div>
+	{% endblock %}
 
-{% block body %}
+	{% block body %}
 	<div class="container">
-		<h1 class="h3 mb-3 mt-4">Registro</h1>
-        {{ form_start(registrationForm) }}
 		<div class="row">
-			<div class="col-12 mb-3">
+			<h1 class="col-6 h3 mb-3 mt-4">Registro</h1>
+			{{ form_start(registrationForm) }}
+			<div class="col-6 mb-3">
 				{{ form_row(registrationForm.name) }}
-			</div>
-			<div class="col-12 mb-3">
 				{{ form_row(registrationForm.email) }}
-			</div>
-			<div class="col-12 mb-3">
 				{{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
-			</div>
-			<div class="col-12 mb-3">
 				{{ form_row(registrationForm.lastname) }}
-			</div>
-			<div class="col-12 mb-3">
 				{{ form_row(registrationForm.roles) }}
-			</div>
-			<div class="col-12 mb-3">
 				{{ form_row(registrationForm.agreeTerms) }}
+				<button type="submit" onclick="alert('Usuario creado con éxito.');" class="btn btn-lg btn-success">Registrar</button>
+				{{ form_end(registrationForm) }}
 			</div>
-            <div class="col-12 mb-3">
-				<button type="submit" class="btn btn-lg btn-success">Registrar</button>
-	        {{ form_end(registrationForm) }}
+			<div class="col-6 mb-3">
+				{# Poner algo #}
 			</div>
 
 		</div>
-
-	</div>
-
-
-	
-{% endblock %}
+		<div </div> {% endblock %}
