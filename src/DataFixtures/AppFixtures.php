@@ -130,12 +130,21 @@ class AppFixtures extends Fixture
         $producto3->setTipoProducto($tipoProducto3);
         $manager->persist($producto3);
 
+        // Producto 4
+        $producto4 = new Producto();
+        $producto4->setNombre("Manzana");
+        $producto4->setPrecio(0.11);
+        $producto4->setStock(102);
+        $producto4->setTipoProducto($tipoProducto1);
+        $manager->persist($producto4);
+
         //------------------PEDIDOS------------------//
         
         // Pedido 1
         $pedido1 = new Pedido();
         $pedido1->setUser($usuario1);
         $pedido1->addProducto($producto1);
+        $pedido1->addProducto($producto4);
         $pedido1->setTienda($tienda1);
         $manager->persist($pedido1);
 
@@ -143,6 +152,7 @@ class AppFixtures extends Fixture
         $pedido2 = new Pedido();
         $pedido2->setUser($usuario1);
         $pedido2->addProducto($producto2);
+        $pedido2->addProducto($producto3);
         $pedido2->setTienda($tienda2);
         $manager->persist($pedido2);
 

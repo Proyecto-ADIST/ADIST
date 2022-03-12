@@ -229,13 +229,19 @@ class ApiController extends AbstractController
         $results->count = count($pedidos);
         $results->results = array();
 
-
         foreach ($pedidos as $pedido) {
+            $user = $entityManager->getRepository(User::class)->find($pedido->getUser());
+            $tienda = $entityManager->getRepository(Tienda::class)->find($pedido->getTienda());
             $result = new \stdClass();
             $result->id = $pedido->getId();
-            $result->user = $pedido->getUser();
-            $result->producto = $pedido->getProducto();
-            $result->tienda = $pedido->getTienda();
+            $result->user = $user->getName();
+            //$result->producto = $pedido->getProducto();
+            //$result->producto = array();
+            foreach ($pedido->getProducto() as $producto) {
+                $result->productos[] = $producto->getNombre();
+            }
+            $result->tienda = $tienda->getNombre();
+            $result->direccion = $tienda->getDireccion();
 
             array_push($results->results, $result);
         }
