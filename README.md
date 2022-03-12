@@ -49,6 +49,8 @@ Adist, es un software desarrollado a través de symfony alojado en un gestor de 
 
 Tendrá distintas interfaces, para administrador, repartidor y almacenista.
 
+Enlace a la aplicación desplegada: https://adist-app.herokuapp.com/
+
 ## Comenzando 🚀
 
 Para poder echar un vistazo y ver como funciona:
