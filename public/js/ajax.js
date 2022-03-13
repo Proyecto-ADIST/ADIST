@@ -19,7 +19,6 @@ function obtenerProductoPorTipoProducto(id) {
 
 }
 
-
 function pintarProducto(response) {
 
         $response.id;
@@ -64,7 +63,6 @@ function borrarProducto(id) {
 
 
 }
-
 
 function obtenerTiendas() {
 

@@ -10,13 +10,28 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						
-						{% if is_granted('ROLE_REPARTIDOR') or is_granted('ROLE_ALMACENISTA') %}
+						{% if is_granted('ROLE_REPARTIDOR') %}
 
 							<li class="nav-item">
-								<a class="nav-link apartados" href="#">Pedidos</a>
+								<a class="nav-link apartados">Pedidos</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link apartados" href="tiendas.html.twig">Tiendas</a>
 							</li>
 
 						{% endif %}
+
+						{% if is_granted('ROLE_ALMACENISTA') %}
+
+							<li class="nav-item">
+								<a class="nav-link apartados">Pedidos</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link apartados">Tiendas</a>
+							</li>
+
+						{% endif %}
+						
 						<li class="nav-item">
 							<a class="nav-link">Rol:
 
