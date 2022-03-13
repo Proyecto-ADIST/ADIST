@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+	<main role="main">
+
+		<div class="container">
+
+			<div class="row row-cols-1 row-cols-md-3 g-4 mt-5 ms-5">
+
+				<div class="col ms-5">
+
+					<div class="card text-center ms-5">
+						<a href="{{ path('app_registroTienda') }}"><img src="/images/nuevo.png" class="car-img-top img-fluid"></a>
+						<div class=" card bg-violet h-100">
+							<div class="card-body d-flex flex-column">
+								<li class="card-title text-light">
+									<a class="card-text text-align-center">
+										<span style="color: black;">Añadir una tienda</span>
+									</a>
+								</li>
+								<a href="{{ path('app_registroTienda') }}" class="btn btn-success">Completar formulario de registro</a>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="col ms-5">
+					<div class="card text-center ms-5">
+						<a href="{{ path('app_listaTienda') }}"><img src="/images/eliminar.png" class="car-img-top img-fluid"></a>
+						<div class=" card bg-violet h-100">
+							<div class="card-body d-flex flex-column">
+								<li class="card-title text-light">
+									<a class="card-text text-align-center">
+										<span style="color: black;">Borrar una tienda</span>
+									</a>
+								</li>
+								<a href="{{ path('app_listaTienda') }}" class="btn btn-danger">Elegir tienda</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>{% endblock %}
