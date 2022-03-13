@@ -137,26 +137,58 @@ class ApiController extends AbstractController
     }
     
     //PROBLEMA
-    function getTipoProducto($tipo)
+    function getTipoProducto($id)
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $producto = $entityManager->getRepository(TipoProducto::class)->find($tipo);
+        $tipoproducto = $entityManager->getRepository(TipoProducto::class)->find($id);
         // Si el Tipo de producto no existe devolvemos un error con código 404.
-        if ($producto == null) {
+        if ($tipoproducto == null) {
             return new JsonResponse([
                 'error' => 'No tenemos este tipo de producto'
             ], 404);
         }
         // Creamos un objeto genérico y lo rellenamos con la información.
         $result = new \stdClass();
-        $result->id = $producto->getId();
-        $result->tipo = $producto->getNombre();
-        $result->tipo = $producto->getTipoProducto();
+        $result->id = $tipoproducto->getId();
+        $result->tipo = $tipoproducto->getTipo();
+        
         
         // Al utilizar JsonResponse, la conversión del objeto $result a JSON se hace de forma automática.
         return new JsonResponse($result);
     }
-    
+
+    function getProductosPorTipoProducto($idtipo)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $productos = $entityManager->getRepository(Producto::class)->findBy(['tipo_producto'=>$idtipo]);
+        // Si el Tipo de producto no existe devolvemos un error con código 404.
+        if ($productos == null) {
+            return new JsonResponse([
+                'error' => 'No tenemos este tipo de producto'
+            ], 404);
+        }
+        // Creamos un objeto genérico y lo rellenamos con la información.
+        $results = new \stdClass();
+        $results->count = count($productos);
+        $results->results = array();
+
+        
+        foreach ($productos as $producto) {           
+            $result = new \stdClass();
+            $result->id = $producto->getId();
+            $result->nombre = $producto->getNombre();            
+            $result->precio = $producto->getPrecio();
+            $result->stock = $producto->getStock();
+            $result->url = $this->generateUrl('api_get_producto', [
+                'id' => $result->id,
+            ], UrlGeneratorInterface::ABSOLUTE_URL);
+
+            array_push($results->results, $result);
+        }
+
+        // Devolvemos el resultado en formato JSON
+        return new JsonResponse($results);
+    }
 
     function getTienda($id)
     {

@@ -1,11 +1,12 @@
 
 function obtenerProductoPorTipoProducto(id) {
 
-        var urlBusqueda = "/api/tipoproducto/" + id;
+        var urlBusqueda = "/api/productoportipoproducto/" + id;
 
         $.ajax({
                 url: urlBusqueda,
                 type: 'get',
+                dataType: 'json',
                 beforeSend: function () {
                         $("#resultado").html("Procesando, espere por favor...");
                 },
