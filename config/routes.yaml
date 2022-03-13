@@ -106,6 +106,11 @@ api_delete_producto:
   controller: App\Controller\ApiController::deleteProducto
   methods: ["DELETE"]
 
+api_delete_pedido:
+  path: /api/pedidos/{id}
+  controller: App\Controller\ApiController::deletePedido
+  methods: ["DELETE"]
+
 api_buscar_producto:
   path: /findBySimilarName
   controller: App\Controller\ApiAjaxController::findBySimilarName

@@ -341,19 +341,20 @@ class ApiController extends AbstractController
     function postPedido(Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $producto = $entityManager->getRepository(Pedido::class)->find($request->request->getId());
-        if ($producto) {
+        $user = $entityManager->getRepository(User::class)->find($request->request->get("user"));
+        if ($user) {
             return new JsonResponse([
-                'error' => 'El pedido ya existe'
+                'error' => 'El usuario se encuentra'
             ], 404);
-        }
+        }   
 
-        $tipoProducto = $entityManager->getRepository(TipoProducto::class)->findOneBy(['tipo' => $request->request->get("tipo_producto")]);
-        $producto = new Producto();
-        $producto->setNombre($request->request->get("nombre"));
-        $producto->setTipoProducto($tipoProducto);
-        $producto->setPrecio($request->request->get("precio"));
-        $producto->setStock($request->request->get("stock"));
+        $nombreProducto = 
+        $nombreTienda = $entityManager->getRepository(TipoProducto::class)->findOneBy(['tipo' => $request->request->get("tipo_producto")]);
+        $pedido = new Pedido();
+        $pedido->setUser($request->request->get("nombre"));
+        $pedido->setTienda($tipoProducto);
+        $pedido->setPrecio($request->request->get("precio"));
+        $pedido->setStock($request->request->get("stock"));
         $entityManager->persist($producto);
         $entityManager->flush();
 
@@ -368,7 +369,7 @@ class ApiController extends AbstractController
 
         return new JsonResponse($result, 201);
     }
-*/
+    */
     //PROBLEMA: NO SETEA EL ID DEL CAMPO TIPO_PRODUCTO_ID DE LA TABLA PRODUCTO
     function putProducto(Request $request, $id)
     {
@@ -448,6 +449,22 @@ class ApiController extends AbstractController
         }
 
         $entityManager->remove($tienda);
+        $entityManager->flush();
+
+        return new JsonResponse(null, 204);
+    }
+
+    function deletePedido($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $pedido = $entityManager->getRepository(Pedido::class)->find($id);
+        if ($pedido == null) {
+            return new JsonResponse([
+                'error' => 'El pedido no existe no existe'
+            ], 404);
+        }
+
+        $entityManager->remove($pedido);
         $entityManager->flush();
 
         return new JsonResponse(null, 204);
