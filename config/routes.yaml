@@ -76,6 +76,11 @@ api_post_tienda:
   controller: App\Controller\ApiController::postTienda
   methods: ["POST"]
 
+api_post_pedido:
+  path: /api/pedidos
+  controller: App\Controller\ApiController::postPedido
+  methods: ["POST"]
+
 api_put_producto:
   path: /api/productos/{id}
   controller: App\Controller\ApiController::putProducto

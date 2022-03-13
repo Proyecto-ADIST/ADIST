@@ -260,7 +260,6 @@ class ApiController extends AbstractController
             ], 404);
         }
 
-
         $tipoProducto = $entityManager->getRepository(TipoProducto::class)->findOneBy(['tipo' => $request->request->get("tipo_producto")]);
         $producto = new Producto();
         $producto->setNombre($request->request->get("nombre"));
@@ -306,7 +305,38 @@ class ApiController extends AbstractController
 
         return new JsonResponse($result, 201);
     }
+    /*
+    function postPedido(Request $request)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $producto = $entityManager->getRepository(Pedido::class)->find($request->request->getId());
+        if ($producto) {
+            return new JsonResponse([
+                'error' => 'El pedido ya existe'
+            ], 404);
+        }
 
+        $tipoProducto = $entityManager->getRepository(TipoProducto::class)->findOneBy(['tipo' => $request->request->get("tipo_producto")]);
+        $producto = new Producto();
+        $producto->setNombre($request->request->get("nombre"));
+        $producto->setTipoProducto($tipoProducto);
+        $producto->setPrecio($request->request->get("precio"));
+        $producto->setStock($request->request->get("stock"));
+        $entityManager->persist($producto);
+        $entityManager->flush();
+
+
+        $result = new \stdClass();
+        $result->id = $producto->getId();
+        $result->nombre = $producto->getNombre();
+        $result->tipo = $tipoProducto->getTipo();
+        $result->precio = $producto->getPrecio();
+        $result->stock = $producto->getStock();
+
+
+        return new JsonResponse($result, 201);
+    }
+*/
     //PROBLEMA: NO SETEA EL ID DEL CAMPO TIPO_PRODUCTO_ID DE LA TABLA PRODUCTO
     function putProducto(Request $request, $id)
     {
@@ -374,7 +404,6 @@ class ApiController extends AbstractController
 
         return new JsonResponse(null, 204);
     }
-
 
     function deleteTienda($id)
     {
