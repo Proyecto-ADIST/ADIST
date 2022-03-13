@@ -1,7 +1,7 @@
 
 function obtenerProductoPorTipoProducto(id) {
 
-        var urlBusqueda = "/api/productos/" + id;
+        var urlBusqueda = "/api/tipoproducto/" + id;
 
         $.ajax({
                 url: urlBusqueda,
