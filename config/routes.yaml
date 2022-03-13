@@ -18,17 +18,17 @@ app_usuarios:
   path: /usuarios
   controller: App\Controller\UsuariosController::usuarios
 
-app_tiendas:
-  path: /tiendas
-  controller: App\Controller\TiendasController::tiendas
+# app_tiendas:
+#   path: /tiendas
+#   controller: App\Controller\TiendasController::tiendas
 
-app_añadirTienda:
-  path: /tienda/registro
-  controller: App\Controller\RegistroTiendaController::registro
+# app_añadirTienda:
+#   path: /tienda/registro
+#   controller: App\Controller\RegistroTiendaController::registro
 
-app_borrarTienda:
-  path: /tienda/borrar
-  controller: controller: App\Controller\BorrarTiendaController::borrar
+# app_borrarTienda:
+#   path: /tienda/borrar
+#   controller: controller: App\Controller\BorrarTiendaController::borrar
 
 app_productos:
   path: /productos
