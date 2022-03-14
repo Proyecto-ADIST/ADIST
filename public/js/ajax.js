@@ -2,21 +2,24 @@
 function obtenerProductoPorTipoProducto(id) {
 
         var urlBusqueda = "/api/productoportipoproducto/" + id;
+        var resultado = "#resultado" + id;
 
         $.ajax({
                 url: urlBusqueda,
                 type: 'get',
                 dataType: 'json',
                 beforeSend: function () {
-                        $("#resultado").html("Procesando, espere por favor...");
+                        $(resultado).html("Procesando, espere por favor...");
                 },
-                success: function (response) {
-                        alert(response.results[0].nombre)
+                success: function (response) {                       
+
+
+                        var html_respuesta = 
                         
-
-                        var html_respuesta = "<p>" + response.results[0].nombre + "</p>"
-
-                        $("#resultado").html(html_respuesta);
+                        
+                        "<p>" + response.results[0].nombre + ".</p>"
+                         
+                        $(resultado).html(html_respuesta);
 
                 }
         });
