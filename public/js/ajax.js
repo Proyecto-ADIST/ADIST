@@ -11,23 +11,38 @@ function obtenerProductoPorTipoProducto(id) {
                 beforeSend: function () {
                         $(resultado).html("Procesando, espere por favor...");
                 },
-                success: function (response) {                       
+                success: function (response) {
 
 
-                        var html_respuesta; 
+                        // var html_respuesta = "<p>" ; 
 
-                        // for (let i = 0; i < response.results.length; i++) {
-                        //         const element =  array[i];
 
-                        //         html_respuesta  =  "<p>" + response.results[i].nombre + ".</p>"
-                                
-                               
-                                
-                        // }
+                        // for (let i = 0; i < response['count']; i++) {
+                        //         html_respuesta += response.results[i].nombre + " - " + response.results[i].stock + " unidades<br>";
+
+                        // }                
+
+                        // html_respuesta += "</p>";
+
+                        var html_respuesta = "<table class='table table-bordered' style='border: solid 2px;'>" + 
+                        "<tr>" +
+                                "<th>Producto</th>" + 
+                                "<th>Stock</th>"
+                        "</tr>"
                         
+                        ;
+
                         
-                        html_respuesta = "<p>" + response.results[0].nombre+".</p>"
-                         
+                        for (let i = 0; i < response['count']; i++) {
+
+                                html_respuesta += "<tr>" + "<td>" + response.results[i].nombre + " </td><td>"  +response.results[i].stock + " </td></tr>";
+
+                        }
+
+                        
+
+                        html_respuesta += "</table>";
+
                         $(resultado).html(html_respuesta);
 
                 }
