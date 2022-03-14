@@ -14,19 +14,21 @@ function obtenerProductoPorTipoProducto(id) {
                 success: function (response) {                       
 
 
-                        var html_respuesta; 
+                        var html_respuesta = "<p>" ; 
 
                         // for (let i = 0; i < response.results.length; i++) {
                         //         const element =  array[i];
 
-                        //         html_respuesta  =  "<p>" + response.results[i].nombre + ".</p>"
-                                
+                        //         html_respuesta  =  "<p>" + response.results[i].nombre + ".</p>"                              
                                
                                 
-                        // }
+                        // }      
+                        for (let i = 0; i < response['count']; i++) {
+                                html_respuesta += response.results[i].nombre + " - " + response.results[i].stock + " unidades<br>";
+                                
+                        }                
                         
-                        
-                        html_respuesta = "<p>" + response.results[0].nombre+".</p>"
+                        html_respuesta += "</p>";
                          
                         $(resultado).html(html_respuesta);
 
