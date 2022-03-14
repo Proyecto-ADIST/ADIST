@@ -247,13 +247,13 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "text",
-							"value": "Prueba Tweet",
+							"key": "nombre",
+							"value": "Mercadona",
 							"type": "default"
 						},
 						{
-							"key": "userId",
-							"value": "1",
+							"key": "direccion",
+							"value": "Avenida 1",
 							"type": "default"
 						}
 					]
@@ -268,6 +268,51 @@
 					"path": [
 						"api",
 						"tiendas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Pedido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "text",
+							"value": "Prueba Tweet",
+							"type": "default"
+						},
+						{
+							"key": "userId",
+							"value": "1",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/pedidos?nombreUser=Laura&nombreTienda=aeee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pedidos"
+					],
+					"query": [
+						{
+							"key": "nombreUser",
+							"value": "Laura"
+						},
+						{
+							"key": "nombreTienda",
+							"value": "aeee"
+						}
 					]
 				}
 			},
@@ -318,14 +363,29 @@
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
-							"key": "text",
-							"value": "Prueba tweet put",
+							"key": "nombre",
+							"value": "Croissant",
+							"type": "default"
+						},
+						{
+							"key": "tipo",
+							"value": "Dulce",
+							"type": "default"
+						},
+						{
+							"key": "precio",
+							"value": "3.99",
+							"type": "default"
+						},
+						{
+							"key": "stock",
+							"value": "10",
 							"type": "default"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/tweets/13",
+					"raw": "http://localhost:8000/api/productos/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -333,8 +393,8 @@
 					"port": "8000",
 					"path": [
 						"api",
-						"tweets",
-						"13"
+						"productos",
+						"3"
 					]
 				}
 			},
@@ -370,7 +430,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/tiendas/",
+					"raw": "http://127.0.0.1:8000/api/pedidos/5",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -381,8 +441,32 @@
 					"port": "8000",
 					"path": [
 						"api",
-						"tiendas",
-						""
+						"pedidos",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Pedido",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/pedidos/14",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pedidos",
+						"14"
 					]
 				}
 			},

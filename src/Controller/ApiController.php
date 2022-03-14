@@ -343,37 +343,44 @@ class ApiController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $user = $entityManager->getRepository(User::class)->findOneBy(['name' => $request->request->get("nombreUser")]);
         $tienda = $entityManager->getRepository(Tienda::class)->findOneBy(['nombre' => $request->request->get("nombreTienda")]);
-        if ($user) {
+        $producto = $entityManager->getRepository(Producto::class)->findOneBy(['nombre' => $request->request->get("producto")]);
+        if ($user == null) {
             return new JsonResponse([
                 'error' => 'El usuario no existe'
             ], 404);
         }   
 
-        if ($tienda) {
+        if ($tienda == null) {
             return new JsonResponse([
                 'error' => 'La tienda no existe'
             ], 404);
         }  
+
+        if ($producto == null) {
+            return new JsonResponse([
+                'error' => 'El producto no existe'
+            ], 404);
+        } 
         
         //$nombreTienda = $entityManager->getRepository(TipoProducto::class)->findOneBy(['tipo' => $request->request->get("tipo_producto")]);
         $pedido = new Pedido();
-        $pedido->setUser($request->request->get("user"));
-        $pedido->setTienda($request->request->get("tienda"));
-
+        $pedido->setUser($user);
+        $pedido->setTienda($tienda);
+        $pedido->addProducto($producto);
+        //Lista de ids, obtener uno por uno los producto
         $entityManager->persist($pedido);
         $entityManager->flush();
 
-        /*
+        
         $result = new \stdClass();
-        $result->id = $producto->getId();
-        $result->nombre = $producto->getNombre();
-        $result->tipo = $tipoProducto->getTipo();
-        $result->precio = $producto->getPrecio();
-        $result->stock = $producto->getStock();
+        $result->id = $pedido->getId();
+        $result->nombre = $user->getName();
+        $result->tienda = $tienda->getNombre();
+        $result->producto = $producto->getNombre();
 
 
         return new JsonResponse($result, 201);
-        */
+        
     }
     
     //PROBLEMA: NO SETEA EL ID DEL CAMPO TIPO_PRODUCTO_ID DE LA TABLA PRODUCTO
