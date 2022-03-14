@@ -11,8 +11,13 @@ function obtenerProductoPorTipoProducto(id) {
                         $("#resultado").html("Procesando, espere por favor...");
                 },
                 success: function (response) {
-                        $("#resultado").html(response);
-                        //pintarProducto();
+                        alert(response.results[0].nombre)
+                        
+
+                        var html_respuesta = "<p>" + response.results[0].nombre + "</p>"
+
+                        $("#resultado").html(html_respuesta);
+
                 }
         });
 

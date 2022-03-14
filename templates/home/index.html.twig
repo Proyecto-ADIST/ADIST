@@ -27,7 +27,9 @@
 
 
 {% block body %}
-
+fff
+{{ temperatura }}
+ffff
 {% if is_granted('ROLE_ADMIN') %}
 
 	<main role="main">
@@ -80,12 +82,15 @@
 			<h1>Tipos de productos</h1>
 			<h2 class="text-secondary mb-5">Elije un producto para añadir a la lista de pedidos</h2>
 			<div class="row mt-5">
-				<div class="col-md mb-2">
+				<div id="resultado" class="col-md mb-2">
 					<div class="card text-center">
 						<a><img src="images/fruta.jpg" class="card-img-top"></a>
 						<div class="card-body">
 							<a class="btn btn-lg" type="button" onclick="obtenerProductoPorTipoProducto(1)">
 								<h5 class="card-title text-center">Frutas</h5>
+								<script>
+								document.getElementById("resultado").innerHTML = myObj["nombre"];
+								</script>
 							</a>
 						</div>
 					</div>
