@@ -21,8 +21,9 @@
 						<table class="table table-bordered">
 							<thead>
 								<tr>
+									<th>Tienda</th>
+									<th>Dirección</th>
 									<th>Producto</th>
-									<th>Precio</th>
 									<th>Stock</th>
 								</tr>
 							</thead>
@@ -32,12 +33,10 @@
 								{% for pedido in pedidos %}
 
 									<tr>
-										{# <td>{{pedido.pedido_producto.producto.nombre}}</td> #}
+										<td>{{pedido.tienda.nombre}}</td>
+										<td>{{pedido.tienda.direccion}}</td>
 									</tr>
-
 								{% endfor %}
-
-
 							</tbody>
 						</table>
 					</div>

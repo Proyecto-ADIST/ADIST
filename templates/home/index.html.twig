@@ -28,7 +28,9 @@
 
 {% block body %}
 
+<div class="float-right temperatura">
 {{ temperatura }}
+</div>
 
 {% if is_granted('ROLE_ADMIN') %}
 
@@ -123,7 +125,7 @@
 	<main role="main">
 		<div class="container-lg">
 			<div class="row">
-				<div class="col">
+				<div class="col-6 mt-4">
 					<div class="table">
 						<div class="table-wrapper">
 							<div class="table-title">
@@ -168,7 +170,7 @@
 					</div>
 				</div>
 
-				<div class="col">
+				<div class="col-6">
 					<div class="table">
 						<div class="table-wrapper">
 							<div class="table-title">
@@ -212,7 +214,56 @@
 						</div>
 					</div>
 				</div>
+
+				<div class="col-6">
+					<div class="table">
+						<div class="table-wrapper">
+							<div class="table-title">
+								<div class="row">
+									<div class="col-sm-8 mb-5">
+										<h2>Lista de
+											<b>Tiendas</b>
+										</h2>
+									</div>
+								</div>
+							</div>
+							<table class="table table-bordered" style="border: solid 2px;">
+								<thead>
+									<tr>
+										<th>Tienda</th>
+										<th>Dirección</th>
+									</tr>
+								</thead>
+								<tbody>
+
+
+									{% for tienda in tiendas %}
+
+										<tr>
+											<td>{{tienda.nombre}}</td>
+											<td>{{tienda.direccion}}</td>
+
+											<td>
+
+												<a class="delete" title="Delete" data-toggle="tooltip">
+													<i class="material-icons">&#xE872;</i>
+												</a>
+											</td>
+											<td>
+												<a href="{{ path('app_tiendas') }}">Añadir tienda</a>
+											</td>
+										</tr>
+
+									{% endfor %}
+
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</main>
 {% endif %}{% endblock %}
+

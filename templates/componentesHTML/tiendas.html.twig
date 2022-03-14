@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Añadir tienda
+{% endblock %}
+
+
+{% block nav %}
+
+	<div>
+		<a type="submit" onclick="history.back()" class="ms-3 mt-3">
+			<span style="color: blue;">&laquo;</span>
+			<span class="ms-2" style="color: blue;">Volver</span>
+		</a>
+	</div>
+
+{% endblock %}
+
+{% block body %}
+<body style="background: linear-gradient(0.25turn, #FBB163, #CFFB63, #E5D238);">
+	<form
+		method="post">
+		<div class="container">
+			<div class="row mt-5">
+				<div class="col-md-6 mt-3">
+
+					<div class="card">
+						<div class="card-body d-flex flex-column">
+							<h1 class="h3 mb-3 mt-4 mb-5 text-center">Registro de tienda</h1>
+							<div class="row">
+
+								<div class="col-12 mt-2 mb-3">
+									<label for="tienda" class="formulario">Nombre de la tienda:</label>
+								</div>
+
+								<div class="col-12 mb-3">
+									<input placeholder="Tienda" type="text" class="form-control" for="direccion" required autofocus>
+								</div>
+
+								<div class="col-12 mb-4">
+									<div class="form-text">
+										Ejemplo:
+										<span style="font-style: italic">ADIST's shop</span>
+									</div>
+								</div>
+
+								<div class="col-12 mb-3">
+									<label class="formulario" for="direccion">Dirección:</label>
+								</div>
+
+								<div class="col-12 mb-3">
+									<input placeholder="Direción" type="text" for="direccion" class="form-controlmb-3" required>
+								</div>
+
+								<div class="col-12 mb-4">
+									<div class="form-text">
+										Ejemplo:
+										<b>C./
+										</b>
+										<span style="font-style: italic">Guadalete</span>
+										<b>
+											Nº</b>
+										<span style="font-style: italic">24</span>
+									</div>
+								</div>
+							</div>
+
+
+							<button class="btn btn-lg btn-primary" type="submit">Añadir</button>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-md-6 mt-3">
+					<div class="card">
+						<img src="/images/tienda.jpeg" alt="Snow" style="width:100%;">
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+{% endblock %}

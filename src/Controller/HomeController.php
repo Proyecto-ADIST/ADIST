@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Producto;
 use App\Entity\Pedido;
+use App\Entity\Tienda;
 
 
 class HomeController extends AbstractController
@@ -20,6 +21,9 @@ class HomeController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $pedidos = $entityManager->getRepository(Pedido::class)->findAll();
 
+        $entityManager = $this->getDoctrine()->getManager();
+        $tiendas = $entityManager->getRepository(Tienda::class)->findAll();
+
 
         $api_key= '2ec5e2c352e79005fc8960dc22cb7090';
 
@@ -30,16 +34,13 @@ class HomeController extends AbstractController
         $temperature = $weather_data['main']['temp'];
         
         $temperature_in_celcius = "La temperatura en Écija es de ".round($temperature / 27.3) . "ºC.";
-        
-       
-
-
 
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'productos' => $productos,
             'pedidos' => $pedidos,
+            'tiendas' => $tiendas,
             'temperatura' => $temperature_in_celcius
         ]);
     }
