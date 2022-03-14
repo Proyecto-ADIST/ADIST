@@ -2,17 +2,25 @@
 function obtenerProductoPorTipoProducto(id) {
 
         var urlBusqueda = "/api/productoportipoproducto/" + id;
+        var resultado = "#resultado" + id;
 
         $.ajax({
                 url: urlBusqueda,
                 type: 'get',
                 dataType: 'json',
                 beforeSend: function () {
-                        $("#resultado").html("Procesando, espere por favor...");
+                        $(resultado).html("Procesando, espere por favor...");
                 },
-                success: function (response) {
-                        $("#resultado").html(response);
-                        //pintarProducto();
+                success: function (response) {                       
+
+
+                        var html_respuesta = 
+                        
+                        
+                        "<p>" + response.results[0].nombre + ".</p>"
+                         
+                        $(resultado).html(html_respuesta);
+
                 }
         });
 

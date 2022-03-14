@@ -337,28 +337,33 @@ class ApiController extends AbstractController
 
         return new JsonResponse($result, 201);
     }
-    /*
+    
     function postPedido(Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $user = $entityManager->getRepository(User::class)->find($request->request->get("user"));
+        $user = $entityManager->getRepository(User::class)->findOneBy(['name' => $request->request->get("nombreUser")]);
+        $tienda = $entityManager->getRepository(Tienda::class)->findOneBy(['nombre' => $request->request->get("nombreTienda")]);
         if ($user) {
             return new JsonResponse([
-                'error' => 'El usuario se encuentra'
+                'error' => 'El usuario no existe'
             ], 404);
         }   
 
-        $nombreProducto = 
-        $nombreTienda = $entityManager->getRepository(TipoProducto::class)->findOneBy(['tipo' => $request->request->get("tipo_producto")]);
+        if ($tienda) {
+            return new JsonResponse([
+                'error' => 'La tienda no existe'
+            ], 404);
+        }  
+        
+        //$nombreTienda = $entityManager->getRepository(TipoProducto::class)->findOneBy(['tipo' => $request->request->get("tipo_producto")]);
         $pedido = new Pedido();
-        $pedido->setUser($request->request->get("nombre"));
-        $pedido->setTienda($tipoProducto);
-        $pedido->setPrecio($request->request->get("precio"));
-        $pedido->setStock($request->request->get("stock"));
-        $entityManager->persist($producto);
+        $pedido->setUser($request->request->get("user"));
+        $pedido->setTienda($request->request->get("tienda"));
+
+        $entityManager->persist($pedido);
         $entityManager->flush();
 
-
+        /*
         $result = new \stdClass();
         $result->id = $producto->getId();
         $result->nombre = $producto->getNombre();
@@ -368,8 +373,9 @@ class ApiController extends AbstractController
 
 
         return new JsonResponse($result, 201);
+        */
     }
-    */
+    
     //PROBLEMA: NO SETEA EL ID DEL CAMPO TIPO_PRODUCTO_ID DE LA TABLA PRODUCTO
     function putProducto(Request $request, $id)
     {
