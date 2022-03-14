@@ -54,64 +54,25 @@ function obtenerProductoPorTipoProducto(id) {
 }
 
 
-function obtenerProducto(id) {
+function borrarProducto(id) {//NO FUNCIONA PARA TODAS LAS IDs
 
         var urlBusqueda = "/api/productos/" + id;
+        var resultado = "#producto" + id;
 
         $.ajax({
                 url: urlBusqueda,
-                type: 'get',
-                beforeSend: function () {
-                        $("#resultado").html("Procesando, espere por favor...");
-                },
+                type: 'DELETE',
                 success: function (response) {
-                        $("#resultado").html(response);
-                        //pintarProducto();
+                        $(resultado).remove();
+                        alert( "Se ha eliminado correctamente");
                 }
         });
 
 
 }
 
-function borrarProducto(id) {
 
-        var urlBusqueda = "/api/productos/" + id;
-
-        $.ajax({
-                url: urlBusqueda,
-                type: 'delete',
-                beforeSend: function () {
-                        $("#resultado").html("Procesando, espere por favor...");
-                },
-                success: function (response) {
-                        $("#resultado").html(response);
-                        //pintarProducto();
-                }
-        });
-
-
-}
-
-function obtenerTiendas() {
-
-        var urlBusqueda = "/api/tiendas/";
-
-        $.ajax({
-                url: urlBusqueda,
-                type: 'get',
-                beforeSend: function () {
-                        $("#resultado").html("Procesando, espere por favor...");
-                },
-                success: function (response) {
-                        $("#resultado").html(response);
-                        //pintarProducto();
-                }
-        });
-
-
-}
-
-function borrarTienda(id) {
+function borrarTienda(id) {//NO FUNCIONA PARA TODAS LAS IDs
 
         var urlBusqueda = "/api/tiendas/" + id;
         var resultado = "#tienda" + id;
@@ -119,7 +80,7 @@ function borrarTienda(id) {
         $.ajax({
                 url: urlBusqueda,
                 type: 'DELETE',
-                data: 'json',
+                dataType: 'json',
 
                 success: function(){
                         $(resultado).remove();
@@ -130,9 +91,7 @@ function borrarTienda(id) {
 
 
 
-
-
-function nuevaTienda() {
+function nuevaTienda() {//NO FUNCIONA
         nombre = document.getElementById("nombre").value;
         direccion = document.getElementById("direccion").value;
         // Aquí iría el código de validación
@@ -145,3 +104,38 @@ function nuevaTienda() {
         });
         return false;
     }
+
+
+
+
+function editarProducto(id){//NO FUNCIONA
+
+        var urlBusqueda = "/api/productos/" + id;
+        var resultado = "#producto" + id;
+
+        $.ajax({
+                url: urlBusqueda,
+                type: 'PUT',
+                dataType: 'json',
+
+                success: function(){
+                        // $(resultado).remove();
+                }
+        });
+}
+
+function editarTienda(id){//NO FUNCIONA
+
+        var urlBusqueda = "/api/tiendas/" + id;
+        var resultado = "#tienda" + id;
+
+        $.ajax({
+                url: urlBusqueda,
+                type: 'PUT',
+                dataType: 'json',
+
+                success: function(){
+                        // $(resultado).remove();
+                }
+        });
+}

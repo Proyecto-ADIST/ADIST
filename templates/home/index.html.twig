@@ -149,14 +149,14 @@
 
 
 									{% for producto in productos %}
-										<tr>
+										<tr id="producto#id">
 											<td>{{producto.nombre}}</td>
 											<td>{{producto.stock}}</td>
 											<td style="width: 19%;">
 												<a class="edit" title="Edit" data-toggle="tooltip">
 													<i class="material-icons">&#xE254;</i>
 												</a>
-												<a class="delete" title="Delete" data-toggle="tooltip">
+												<a class="delete" type="button" onclick="borrarTienda(id)" title="Delete" data-toggle="tooltip">
 													<i class="material-icons">&#xE872;</i>
 												</a>
 											</td>
