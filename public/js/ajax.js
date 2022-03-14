@@ -14,10 +14,19 @@ function obtenerProductoPorTipoProducto(id) {
                 success: function (response) {                       
 
 
-                        var html_respuesta = 
+                        var html_respuesta; 
+
+                        // for (let i = 0; i < response.results.length; i++) {
+                        //         const element =  array[i];
+
+                        //         html_respuesta  =  "<p>" + response.results[i].nombre + ".</p>"
+                                
+                               
+                                
+                        // }
                         
                         
-                        "<p>" + response.results[0].nombre + ".</p>"
+                        html_respuesta = "<p>" + response.results[0].nombre+".</p>"
                          
                         $(resultado).html(html_respuesta);
 
@@ -27,12 +36,6 @@ function obtenerProductoPorTipoProducto(id) {
 
 }
 
-function pintarProducto(response) {
-
-        $response.id;
-
-
-}
 
 function obtenerProducto(id) {
 

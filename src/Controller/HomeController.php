@@ -29,19 +29,9 @@ class HomeController extends AbstractController
         
         $temperature = $weather_data['main']['temp'];
         
-        $temperature_in_celcius = round($temperature * 273.15);
+        $temperature_in_celcius = "La temperatura en Écija es de ".round($temperature / 27.3) . "ºC.";
         
-        $temperature_current_weather = $weather_data['weather'][0]['main'];
-        
-        $temperature_current_weather_description = $weather_data['weather'][0]['description'];
-        
-        $temperature_current_weather_icon =$weather_data['weather'][0]['icon'];
-        
-        #echo "La temperatura en Écija es de ". $temperature_in_celcius. "grados.";
-        
-        #echo "<img src='http://openweathermap.org/img/wn/".$temperature_current_weather_icon."@2x.png' />";
-
-
+       
 
 
 
@@ -50,7 +40,7 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
             'productos' => $productos,
             'pedidos' => $pedidos,
-            'temperatura' => $temperature_in_celcius            
+            'temperatura' => $temperature_in_celcius
         ]);
     }
 }
