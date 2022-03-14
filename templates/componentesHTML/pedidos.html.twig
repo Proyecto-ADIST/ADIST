@@ -35,6 +35,12 @@
 									<tr>
 										<td>{{pedido.tienda.nombre}}</td>
 										<td>{{pedido.tienda.direccion}}</td>
+										<td>{% for producto in pedido.producto %} 
+										{{producto.nombre}}
+										{% endfor %}</td>
+										<td>{% for producto in pedido.producto %} 
+										{{producto.stock}}
+										{% endfor %}</td>
 									</tr>
 								{% endfor %}
 							</tbody>

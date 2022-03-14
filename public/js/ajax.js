@@ -114,18 +114,34 @@ function obtenerTiendas() {
 function borrarTienda(id) {
 
         var urlBusqueda = "/api/tiendas/" + id;
+        var resultado = "#tienda" + id;
 
         $.ajax({
                 url: urlBusqueda,
-                type: 'delete',
-                beforeSend: function () {
-                        $("#resultado").html("Procesando, espere por favor...");
-                },
-                success: function (response) {
-                        $("#resultado").html(response);
-                        //pintarProducto();
+                type: 'DELETE',
+                data: 'json',
+
+                success: function(){
+                        $(resultado).remove();
+                        alert( "Se ha eliminado correctamente");
                 }
         });
-
-
 }
+
+
+
+
+
+function nuevaTienda() {
+        nombre = document.getElementById("nombre").value;
+        direccion = document.getElementById("direccion").value;
+        // Aquí iría el código de validación
+        $.ajax({
+          type: "POST", url: "/api/tiendas/", data: "nombre=" + nombre + "&direccion=" + direccion,
+          statusCode: {
+            404: function() { alert('Página no encontrada'); }
+          },
+          success: function(result) { alert( "Resultado: " + result ); }
+        });
+        return false;
+    }

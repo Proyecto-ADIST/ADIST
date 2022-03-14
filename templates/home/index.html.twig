@@ -227,7 +227,7 @@
 									</div>
 								</div>
 							</div>
-							<table class="table table-bordered" style="border: solid 2px;">
+							<table id="myTable"class="table table-bordered" style="border: solid 2px;">
 								<thead>
 									<tr>
 										<th>Tienda</th>
@@ -239,13 +239,13 @@
 
 									{% for tienda in tiendas %}
 
-										<tr>
+										<tr id="tienda#id">
 											<td>{{tienda.nombre}}</td>
 											<td>{{tienda.direccion}}</td>
 
 											<td>
 
-												<a class="delete" title="Delete" data-toggle="tooltip">
+												<a onclick="borrarTienda(id)" type="button" class="delete" title="Delete" data-toggle="tooltip">
 													<i class="material-icons">&#xE872;</i>
 												</a>
 											</td>
