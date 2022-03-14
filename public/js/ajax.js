@@ -27,7 +27,8 @@ function obtenerProductoPorTipoProducto(id) {
                         var html_respuesta = "<table class='table table-bordered' style='border: solid 2px;'>" + 
                         "<tr>" +
                                 "<th>Producto</th>" + 
-                                "<th>Stock</th>"
+                                "<th>Stock</th>" +
+                                "<th>Precio</th>" 
                         "</tr>"
                         
                         ;
@@ -35,7 +36,8 @@ function obtenerProductoPorTipoProducto(id) {
                         
                         for (let i = 0; i < response['count']; i++) {
 
-                                html_respuesta += "<tr>" + "<td>" + response.results[i].nombre + " </td><td>"  +response.results[i].stock + " </td></tr>";
+                                html_respuesta += "<tr>" + "<td>" + response.results[i].nombre + " </td><td>"  +response.results[i].stock 
+                                + " </td><td>"  +response.results[i].precio + " € </td></tr>";
 
                         }
 
