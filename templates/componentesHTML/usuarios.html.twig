@@ -79,7 +79,7 @@
 							</div>
 						</div>
 					</div>
-					<table class="table table-bordered" style="border: solid 2px;" >
+					<table class="table table-bordered" style="border: solid 2px;">
 						<thead>
 							<tr>
 								<th>Nombre</th>
@@ -96,14 +96,20 @@
 									<td>{{usuario.name}}</td>
 									<td>{{usuario.lastname}}</td>
 									<td>{{usuario.email}}</td>
-									<td>{{usuario.roles[0]}}</td>
 									<td>
-										<a class="edit" title="Edit" data-toggle="tooltip">
-											<i class="material-icons">&#xE254;</i>
-										</a>
-										<a class="delete" title="Delete" data-toggle="tooltip">
-											<i class="material-icons">&#xE872;</i>
-										</a>
+										{% if ( usuario.roles[0] == "ROLE_ADMIN" ) %}
+
+											<span>Administrador</span>
+
+										{% elseif ( usuario.roles[0] == "ROLE_REPARTIDOR" ) %}
+
+											<span>Repartidor</span>
+
+										{% else %}
+
+											<span>Almacenista</span>
+
+										{% endif %}
 									</td>
 								</tr>
 							{% endfor %}
