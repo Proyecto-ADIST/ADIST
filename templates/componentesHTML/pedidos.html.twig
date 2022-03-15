@@ -2,7 +2,12 @@
 
 
 {% block body %}
-
+	<div>
+		<a type="submit" onclick="history.back()" class="ms-3 mt-3">
+			<span style="color: blue;">&laquo;</span>
+			<span class="ms-2" style="color: blue;">Volver</span>
+		</a>
+	</div>
 
 	<main role="main">
 		<div class="container-lg">
@@ -24,7 +29,6 @@
 									<th>Tienda</th>
 									<th>Dirección</th>
 									<th>Producto</th>
-									<th>Stock</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -35,12 +39,12 @@
 									<tr>
 										<td>{{pedido.tienda.nombre}}</td>
 										<td>{{pedido.tienda.direccion}}</td>
-										<td>{% for producto in pedido.producto %} 
-										{{producto.nombre}}
-										{% endfor %}</td>
-										<td>{% for producto in pedido.producto %} 
-										{{producto.stock}}
-										{% endfor %}</td>
+										<td>
+											{% for producto in pedido.producto %}
+												-
+												{{producto.nombre}}<br><br>
+											{% endfor %}
+										</td>
 									</tr>
 								{% endfor %}
 							</tbody>

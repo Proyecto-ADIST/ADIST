@@ -8,21 +8,7 @@ function obtenerProductoPorTipoProducto(id) {
                 url: urlBusqueda,
                 type: 'get',
                 dataType: 'json',
-                beforeSend: function () {
-                        $(resultado).html("Procesando, espere por favor...");
-                },
                 success: function (response) {
-
-
-                        // var html_respuesta = "<p>" ; 
-
-
-                        // for (let i = 0; i < response['count']; i++) {
-                        //         html_respuesta += response.results[i].nombre + " - " + response.results[i].stock + " unidades<br>";
-
-                        // }                
-
-                        // html_respuesta += "</p>";
 
                         var html_respuesta = "<table class='table table-bordered' style='border: solid 2px;'>" + 
                         "<tr>" +

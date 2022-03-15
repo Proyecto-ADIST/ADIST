@@ -59,15 +59,15 @@
 				</div>
 				<div class="col ms-5">
 					<div class="card text-center ms-5">
-						<a href="{{ path('app_usuarios') }}"><img src="/images/eliminar.png" class="car-img-top img-fluid"></a>
+						<a href="{{ path('app_usuarios') }}"><img src="/images/usuario.png" class="car-img-top img-fluid"></a>
 						<div class=" card bg-violet h-100">
 							<div class="card-body d-flex flex-column">
 								<li class="card-title text-light">
 									<a class="card-text text-align-center">
-										<span style="color: black;">Eliminar usuario</span>
+										<span style="color: black;">Usuarios</span>
 									</a>
 								</li>
-								<a href="{{ path('app_usuarios') }}" class="btn btn-danger">Ver lista de Usuarios</a>
+								<a href="{{ path('app_usuarios') }}" class="btn btn-info">Ver lista de Usuarios</a>
 							</div>
 						</div>
 					</div>
@@ -152,14 +152,14 @@
 										<tr id="producto#id">
 											<td>{{producto.nombre}}</td>
 											<td>{{producto.stock}}</td>
-											<td style="width: 19%;">
+											{# <td style="width: 19%;">
 												<a class="edit" title="Edit" data-toggle="tooltip">
 													<i class="material-icons">&#xE254;</i>
 												</a>
 												<a class="delete" type="button" onclick="borrarTienda(id)" title="Delete" data-toggle="tooltip">
 													<i class="material-icons">&#xE872;</i>
 												</a>
-											</td>
+											</td> #}
 										</tr>
 									{% endfor %}
 
@@ -243,12 +243,12 @@
 											<td>{{tienda.nombre}}</td>
 											<td>{{tienda.direccion}}</td>
 
-											<td>
+											{# <td>
 
 												<a onclick="borrarTienda(id)" type="button" class="delete" title="Delete" data-toggle="tooltip">
 													<i class="material-icons">&#xE872;</i>
 												</a>
-											</td>
+											</td> #}
 											<td>
 												<a href="{{ path('app_tiendas') }}">Añadir tienda</a>
 											</td>
