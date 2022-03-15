@@ -53,7 +53,7 @@ function obtenerProductoPorTipoProducto(id) {
 
 }
 
-
+/*
 function borrarProducto(id) {//NO FUNCIONA PARA TODAS LAS IDs
 
         var urlBusqueda = "/api/productos/" + id;
@@ -139,3 +139,4 @@ function editarTienda(id){//NO FUNCIONA
                 }
         });
 }
+*/
